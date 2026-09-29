@@ -6,152 +6,240 @@
     <title>House of Briar</title>
     <meta
       name="description"
-      content="House of Briar is a boho marketplace for independent designers and handmade goods."
+      content="House of Briar brings together independent designers, one-of-a-kind pieces, and slow-made beauty for everyday living."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <div class="container nav">
-        <div class="brand">
-          <div class="brand-mark">H</div>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <div class="brand-mark" aria-label="House of Briar home">
+            <span class="brand-icon">H</span>
+            <div>
+              <p class="brand-name">House of Briar</p>
+              <p class="brand-tag">Independent designers. One-of-a-kind pieces.</p>
+            </div>
+          </div>
+
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="#shop">Shop</a>
+            <a href="#story">Our Story</a>
+            <a href="#curations">Curations</a>
+            <a href="#journal">Journal</a>
+          </nav>
+
+          <div class="header-actions">
+            <button class="ghost-button" type="button">Search</button>
+            <button class="primary-button" type="button">Cart (2)</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">Made by someone, not everyone.</p>
+              <h1>Where independent designers find their people.</h1>
+              <p class="hero-text">
+                House of Briar is a marketplace for thoughtful, one-of-a-kind clothing and handcrafted finds made by independent designers — not mass production.
+              </p>
+              <div class="hero-actions">
+                <a class="primary-button" href="#shop">Shop Bestsellers</a>
+                <a class="secondary-button" href="#story">Learn Our Story</a>
+              </div>
+              <ul class="trust-list" aria-label="Store features">
+                <li>Independent makers</li>
+                <li>Small-batch pieces</li>
+                <li>Thoughtful finds</li>
+              </ul>
+            </div>
+
+            <div class="hero-visual" aria-label="Featured products collage">
+              <div class="card large-card">
+                <span class="card-label">Featured Collection</span>
+                <h2>Botanical Bloom</h2>
+                <p>Soft textures, fresh botanicals, and grounded self-care.</p>
+              </div>
+              <div class="mini-tiles">
+                <div class="tile tile-one">
+                  <span>Amber Candle</span>
+                </div>
+                <div class="tile tile-two">
+                  <span>Hearth Set</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-bar">
+          <div class="container feature-inline">
+            <div>
+              <strong>Independent makers</strong>
+              <span>Selected for originality, story, and craft</span>
+            </div>
+            <div>
+              <strong>Thoughtful design</strong>
+              <span>Pieces that feel personal, useful, and lasting</span>
+            </div>
+            <div>
+              <strong>Slow-made beauty</strong>
+              <span>Objects that invite ease, ritual, and meaning</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="shop" class="product-section">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Shop the market</p>
+                <h2>Best sellers for slow living</h2>
+              </div>
+              <div class="filter-toolbar" aria-label="Product filters">
+                <button class="filter-button is-active" type="button" data-filter="all">All</button>
+                <button class="filter-button" type="button" data-filter="home">Home</button>
+                <button class="filter-button" type="button" data-filter="wellness">Wellness</button>
+                <button class="filter-button" type="button" data-filter="gift">Gifts</button>
+              </div>
+            </div>
+
+            <div class="product-grid">
+              <article class="product-card" data-category="home">
+                <div class="product-image image-one"></div>
+                <div class="product-body">
+                  <div class="meta-row">
+                    <span class="badge">Home</span>
+                    <span class="price">$38</span>
+                  </div>
+                  <h3>Wildflower Table Runner</h3>
+                  <p>Natural linen with a soft meadow palette.</p>
+                </div>
+              </article>
+
+              <article class="product-card" data-category="wellness">
+                <div class="product-image image-two"></div>
+                <div class="product-body">
+                  <div class="meta-row">
+                    <span class="badge">Wellness</span>
+                    <span class="price">$24</span>
+                  </div>
+                  <h3>Rose & Oat Bath Soak</h3>
+                  <p>Gentle aromatherapy for evening resets.</p>
+                </div>
+              </article>
+
+              <article class="product-card" data-category="gift">
+                <div class="product-image image-three"></div>
+                <div class="product-body">
+                  <div class="meta-row">
+                    <span class="badge">Gift</span>
+                    <span class="price">$52</span>
+                  </div>
+                  <h3>Golden Hour Care Set</h3>
+                  <p>A soft-touch self-care ritual in one giftable box.</p>
+                </div>
+              </article>
+
+              <article class="product-card" data-category="home">
+                <div class="product-image image-four"></div>
+                <div class="product-body">
+                  <div class="meta-row">
+                    <span class="badge">Home</span>
+                    <span class="price">$46</span>
+                  </div>
+                  <h3>Stoneware Mug Duo</h3>
+                  <p>Warm glaze, beautifully balanced for slow mornings.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="story" class="story-section">
+          <div class="container story-grid">
+            <div class="story-visual">
+              <div class="story-panel">
+                <p class="eyebrow">Our story</p>
+                <h2>Rooted in creative living.</h2>
+              </div>
+            </div>
+            <div class="story-copy">
+              <p>
+                House of Briar began as a love letter to creative humans making beautiful things with care.
+              </p>
+              <p>
+                We celebrate independent designers, slow-made pieces, and the beauty of being different.
+              </p>
+              <a class="secondary-button" href="#journal">Read the Journal</a>
+            </div>
+          </div>
+        </section>
+
+        <section id="curations" class="curation-section">
+          <div class="container">
+            <div class="section-heading narrow">
+              <p class="eyebrow">Curated for everyday rituals</p>
+              <h2>What to bring home today</h2>
+            </div>
+            <div class="curation-grid">
+              <div class="curation-card">
+                <span class="curation-number">01</span>
+                <h3>Morning reset</h3>
+                <p>Tea essentials, ceramic accents, and comforting textures.</p>
+              </div>
+              <div class="curation-card">
+                <span class="curation-number">02</span>
+                <h3>Evening unwind</h3>
+                <p>Warm candles, herbal rituals, and soft ambient details.</p>
+              </div>
+              <div class="curation-card">
+                <span class="curation-number">03</span>
+                <h3>Thoughtful gifting</h3>
+                <p>Celebratory bundles for birthdays, new homes, and rituals.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="journal" class="newsletter-section">
+          <div class="container newsletter-box">
+            <div>
+              <p class="eyebrow">House notes</p>
+              <h2>Sign up for new drops and thoughtful inspiration.</h2>
+            </div>
+            <form class="newsletter-form">
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" type="email" placeholder="Your email" aria-label="Email address" />
+              <button class="primary-button" type="submit">Join</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
           <div>
             <p class="brand-name">House of Briar</p>
-            <p class="brand-tag">Made by someone, not everyone</p>
+            <p class="footer-copy">Independent designers. One-of-a-kind pieces.</p>
           </div>
-        </div>
-
-        <nav class="nav-links">
-          <a href="#shop">Shop</a>
-          <a href="#about">About</a>
-          <a href="#donate">Donate</a>
-        </nav>
-
-        <button class="button primary-btn">Sell with us</button>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <p class="eyebrow">Made by someone, not everyone</p>
-            <h1>Where independent designers find their people.</h1>
-            <p class="lead">
-              A welcoming market for one-of-a-kind clothing, upcycled treasures, and hand-painted pieces.
-            </p>
-
-            <div class="hero-actions">
-              <a class="button primary-btn" href="#shop">Shop the market</a>
-              <a class="button secondary-btn" href="#about">Our story</a>
-            </div>
-
-            <ul class="mini-stats">
-              <li>Free to list</li>
-              <li>8% founding fee</li>
-              <li>Made with intention</li>
-            </ul>
+          <div class="footer-links">
+            <a href="#shop">Shop</a>
+            <a href="#story">Story</a>
+            <a href="#journal">Journal</a>
           </div>
-
-          <div class="hero-card">
-            <span class="card-label">Featured studio</span>
-            <h2>The Briar Atelier</h2>
-            <p>Slow-made pieces with soul, story, and a little woodland magic.</p>
-          </div>
+          <p class="copyright">© <span id="year"></span> House of Briar</p>
         </div>
-      </section>
-
-      <section id="shop" class="shop">
-        <div class="container section-head">
-          <div>
-            <p class="eyebrow">Fresh drops</p>
-            <h2>Our first collection</h2>
-          </div>
-          <button class="button secondary-btn">Browse all</button>
-        </div>
-
-        <div class="container product-grid">
-          <article class="product-card">
-            <div class="product-image forest"></div>
-            <div class="product-body">
-              <div class="meta-row">
-                <span class="tag">One-of-a-kind</span>
-                <span class="price">$180</span>
-              </div>
-              <h3>Forest Halo Halter Set</h3>
-              <p class="designer">by House of Briar</p>
-              <p class="description">
-                Dark moss-green halter set with a woodland spotted print and layered lace detail.
-              </p>
-              <div class="card-actions">
-                <button class="like-btn" type="button">♡ Like</button>
-                <a class="message-btn" href="mailto:hello@houseofbriar.com">Message designer</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image floral"></div>
-            <div class="product-body">
-              <div class="meta-row">
-                <span class="tag">Hand painted</span>
-                <span class="price">$220</span>
-              </div>
-              <h3>Botanical Bloom Ruffle Dress</h3>
-              <p class="designer">by House of Briar</p>
-              <p class="description">
-                Romantic pastel floral dress with a painterly print, ruffles, and a boutique finish.
-              </p>
-              <div class="card-actions">
-                <button class="like-btn" type="button">♡ Like</button>
-                <a class="message-btn" href="mailto:hello@houseofbriar.com">Message designer</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="about" class="story">
-        <div class="container story-grid">
-          <div class="story-panel">
-            <p class="eyebrow">Our mission</p>
-            <h2>Made for slow living, handmade stories, and creative freedom.</h2>
-          </div>
-
-          <div class="story-copy">
-            <p>
-              House of Briar is a place for independent designers to share their work without pressure,
-              gatekeeping, or noise. This is a space for one-of-a-kind pieces, upcycled finds, and
-              hand-painted goods that feel personal.
-            </p>
-            <p>
-              We believe creativity should be soft, honest, and welcoming — no judgment, just beauty and
-              possibility.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="donate" class="donate">
-        <div class="container donate-box">
-          <div>
-            <p class="eyebrow">Support the mission</p>
-            <h2>Help keep this community open, creative, and free.</h2>
-          </div>
-          <a class="button primary-btn" href="https://stripe.com">Donate to House of Briar</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-row">
-        <div>
-          <p class="brand-name">House of Briar</p>
-          <p class="footer-copy">A home for handmade stories.</p>
-        </div>
-        <a href="#shop">Shop</a>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
     <script src="script.js"></script>
   </body>
