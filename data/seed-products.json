@@ -1,0 +1,38 @@
+[
+  {
+    "id": "seed-wildflower-runner",
+    "title": "Wildflower Table Runner",
+    "description": "Natural linen with a soft meadow palette.",
+    "price": 38,
+    "category": "home",
+    "designerId": "house-of-briar",
+    "legacyImageUrl": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    "id": "seed-rose-oat-soak",
+    "title": "Rose & Oat Bath Soak",
+    "description": "Gentle aromatherapy for evening resets.",
+    "price": 24,
+    "category": "wellness",
+    "designerId": "house-of-briar",
+    "legacyImageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    "id": "seed-golden-hour-set",
+    "title": "Golden Hour Care Set",
+    "description": "A soft-touch self-care ritual in one giftable box.",
+    "price": 52,
+    "category": "gift",
+    "designerId": "house-of-briar",
+    "legacyImageUrl": "https://images.unsplash.com/photo-1521590832167-7e8b1a0061ec?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    "id": "seed-stoneware-mug-duo",
+    "title": "Stoneware Mug Duo",
+    "description": "Warm glaze, beautifully balanced for slow mornings.",
+    "price": 46,
+    "category": "home",
+    "designerId": "house-of-briar",
+    "legacyImageUrl": "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=900&q=80"
+  }
+]
