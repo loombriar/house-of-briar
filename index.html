@@ -1,567 +1,221 @@
-const MAX_IMAGES = 10;
-const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
-const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
-
-const byId = (id) => document.getElementById(id);
-const year = byId('year');
-if (year) year.textContent = new Date().getFullYear();
-
-const productGrid = byId('product-grid');
-const shopStatus = byId('shop-status');
-const designerModal = byId('designer-modal');
-const designerLoginBtn = byId('designer-login-btn');
-const designerLoginForm = byId('designer-login-form');
-const designerTokenInput = byId('designer-token');
-const designerAuthMessage = byId('designer-auth-message');
-const loginPanel = byId('designer-login-panel');
-const designerWorkspace = byId('designer-workspace');
-const designerProductsContainer = byId('designer-products');
-const productForm = byId('product-form');
-const photoInput = byId('product-photos');
-const photoPreview = byId('photo-preview');
-const uploadMessage = byId('upload-message');
-const modalClose = byId('modal-close');
-const productDialog = byId('product-dialog');
-const productDetailTitle = byId('product-detail-title');
-const productDetailContent = byId('product-detail-content');
-const productIdInput = byId('product-id');
-const listingFormTitle = byId('listing-form-title');
-
-let designerToken = sessionStorage.getItem('briarDesignerToken') || '';
-let currentListingId = '';
-let currentIdempotencyKey = '';
-let galleryItems = [];
-let selectedImages = [];
-let activeFilter = 'all';
-
-function setMessage(element, message = '', kind = '') {
-  if (!element) return;
-  element.textContent = message;
-  element.dataset.kind = kind;
-}
-
-function formatBytes(bytes) {
-  if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KiB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MiB`;
-}
-
-function categoryLabel(category) {
-  return {
-    home: 'Home',
-    wellness: 'Wellness',
-    gift: 'Gift',
-    apparel: 'Apparel',
-    accessories: 'Accessories',
-    other: 'Other'
-  }[category] || 'Other';
-}
-
-function makeElement(tag, className = '', text = '') {
-  const el = document.createElement(tag);
-  if (className) el.className = className;
-  if (text) el.textContent = text;
-  return el;
-}
-
-function authorizationHeaders(extra = {}) {
-  const headers = new Headers(extra);
-  if (designerToken) headers.set('Authorization', `Bearer ${designerToken}`);
-  return headers;
-}
-
-async function apiRequest(url, options = {}) {
-  const response = await fetch(url, {
-    ...options,
-    headers: authorizationHeaders(options.headers || {})
-  });
-
-  let payload = {};
-  try { payload = await response.json(); } catch {}
-
-  if (!response.ok) {
-    const message = payload?.error?.message || `Request failed (${response.status})`;
-    const error = new Error(message);
-    error.status = response.status;
-    error.code = payload?.error?.code;
-    throw error;
-  }
-
-  return payload;
-}
-
-function getProductImages(product) {
-  if (Array.isArray(product.images) && product.images.length) {
-    return [...product.images].sort((a, b) => (a.position ?? 0) - (b.position ?? 0));
-  }
-  if (product.imageUrl) return [{ id: `legacy-${product.id}`, url: product.imageUrl, legacy: true, position: 0 }];
-  return [];
-}
-
-function renderGallery() {
-  if (!productGrid) return;
-  productGrid.replaceChildren();
-
-  const items = galleryItems.filter((item) => activeFilter === 'all' || item.category === activeFilter);
-  if (!items.length) {
-    const empty = makeElement('p', 'empty-gallery', 'No published pieces are available in this category yet.');
-    productGrid.appendChild(empty);
-    return;
-  }
-
-  for (const item of items) {
-    const images = getProductImages(item);
-    const card = makeElement('button', 'product-card');
-    card.type = 'button';
-    card.setAttribute('aria-label', `View ${item.title} details`);
-    card.addEventListener('click', () => openProductDetails(item));
-
-    const imageWrap = makeElement('span', 'product-image');
-    if (images[0]?.url) {
-      const img = document.createElement('img');
-      img.src = images[0].url;
-      img.alt = `${item.title} cover photo`;
-      img.loading = 'lazy';
-      imageWrap.appendChild(img);
-      if (images.length > 1) {
-        const badge = makeElement('span', 'photo-count-badge', `${images.length} photos`);
-        imageWrap.appendChild(badge);
-      }
-    } else {
-      imageWrap.classList.add('product-image-fallback');
-      imageWrap.textContent = 'House of Briar';
-    }
-
-    const body = makeElement('span', 'product-body');
-    const meta = makeElement('span', 'meta-row');
-    meta.appendChild(makeElement('span', 'badge', categoryLabel(item.category)));
-    meta.appendChild(makeElement('span', 'price', `$${Number(item.price || 0).toFixed(2)}`));
-    body.appendChild(meta);
-    body.appendChild(makeElement('span', 'card-title', item.title));
-    body.appendChild(makeElement('span', 'card-description', item.description || 'A one-of-a-kind designation from an independent designer.'));
-    card.append(imageWrap, body);
-    productGrid.appendChild(card);
-  }
-}
-
-async function loadGallery() {
-  try {
-    const payload = await apiRequest('/api/gallery');
-    galleryItems = Array.isArray(payload.items) ? payload.items : [];
-    renderGallery();
-    if (shopStatus) {
-      setMessage(shopStatus, `${galleryItems.length} published ${galleryItems.length === 1 ? 'piece' : 'pieces'} in the gallery.`, 'success');
-    }
-  } catch (error) {
-    if (shopStatus) setMessage(shopStatus, `Unable to load the gallery: ${error.message}`, 'error');
-  }
-}
-
-function openProductDetails(item) {
-  if (!productDialog) return;
-  const images = getProductImages(item);
-  productDetailTitle.textContent = item.title;
-  productDetailContent.replaceChildren();
-
-  const imageGrid = makeElement('div', 'product-detail-images');
-  images.forEach((image, index) => {
-    const img = document.createElement('img');
-    img.src = image.url;
-    img.alt = `${item.title} image ${index + 1}`;
-    img.loading = index === 0 ? 'eager' : 'lazy';
-    imageGrid.appendChild(img);
-  });
-
-  const copy = makeElement('div', 'product-detail-copy');
-  copy.appendChild(makeElement('span', 'badge', categoryLabel(item.category)));
-  copy.appendChild(makeElement('h3', '', item.title));
-  copy.appendChild(makeElement('strong', 'price', `$${Number(item.price || 0).toFixed(2)}`));
-  copy.appendChild(makeElement('p', '', item.description || 'A carefully made piece from an independent designer.'));
-  if (images.length > 1) copy.appendChild(makeElement('p', 'small-print', `${images.length} photos · first image is the cover`));
-
-  productDetailContent.append(imageGrid, copy);
-  productDialog.showModal();
-}
-
-function resetListingForm() {
-  productForm.reset();
-  currentListingId = '';
-  currentIdempotencyKey = '';
-  productIdInput.value = '';
-  listingFormTitle.textContent = 'Add a design';
-  selectedImages.forEach((item) => {
-    if (item.objectUrl?.startsWith('blob:')) URL.revokeObjectURL(item.objectUrl);
-  });
-  selectedImages = [];
-  photoPreview.replaceChildren();
-  setMessage(uploadMessage, '', '');
-}
-
-function validateSelectedImage(file) {
-  const isAllowedMime = ALLOWED_MIME_TYPES.has(file.type) || /\.(jpe?g|png|webp)$/i.test(file.name);
-  if (!isAllowedMime) return 'Choose a JPEG, PNG, or WebP image.';
-  if (file.size > MAX_IMAGE_BYTES) return 'Each image must be 10 MiB or smaller.';
-  return '';
-}
-
-function renderSelectedImages() {
-  photoPreview.replaceChildren();
-  selectedImages.forEach((image, index) => {
-    const item = makeElement('div', 'photo-preview-item');
-    const img = document.createElement('img');
-    img.src = image.objectUrl || image.url;
-    img.alt = image.name || `Image ${index + 1}`;
-    item.appendChild(img);
-    item.appendChild(makeElement('span', 'photo-order-label', index === 0 ? 'Cover' : String(index + 1)));
-
-    const info = makeElement('div', 'photo-preview-meta');
-    info.appendChild(makeElement('strong', '', image.name || `Image ${index + 1}`));
-    const statusText = image.status === 'uploading' ? 'Uploading…' : image.status === 'ready' ? 'Ready' : image.status === 'failed' ? (image.error || 'Failed') : 'Queued';
-    info.appendChild(makeElement('span', '', `${statusText}${image.size ? ` · ${formatBytes(image.size)}` : ''}`));
-    item.appendChild(info);
-
-    const actions = makeElement('div', 'photo-preview-actions');
-    const moveUp = document.createElement('button');
-    moveUp.type = 'button';
-    moveUp.textContent = 'Move up';
-    moveUp.disabled = index === 0;
-    moveUp.addEventListener('click', () => { if (index > 0) { [selectedImages[index], selectedImages[index - 1]] = [selectedImages[index - 1], selectedImages[index]]; renderSelectedImages(); } });
-    actions.appendChild(moveUp);
-
-    const moveDown = document.createElement('button');
-    moveDown.type = 'button';
-    moveDown.textContent = 'Move down';
-    moveDown.disabled = index === selectedImages.length - 1;
-    moveDown.addEventListener('click', () => { if (index < selectedImages.length - 1) { [selectedImages[index], selectedImages[index + 1]] = [selectedImages[index + 1], selectedImages[index]]; renderSelectedImages(); } });
-    actions.appendChild(moveDown);
-
-    const remove = document.createElement('button');
-    remove.type = 'button';
-    remove.textContent = 'Remove';
-    remove.addEventListener('click', () => {
-      if (image.objectUrl?.startsWith('blob:')) URL.revokeObjectURL(image.objectUrl);
-      selectedImages.splice(index, 1);
-      renderSelectedImages();
-    });
-    actions.appendChild(remove);
-
-    item.appendChild(actions);
-    photoPreview.appendChild(item);
-  });
-}
-
-function addFiles(fileList) {
-  const files = Array.from(fileList || []);
-  if (!files.length) return;
-  const remainingSlots = MAX_IMAGES - selectedImages.length;
-  const nextFiles = files.slice(0, Math.max(0, remainingSlots));
-  const issues = [];
-
-  nextFiles.forEach((file) => {
-    const problem = validateSelectedImage(file);
-    if (problem) {
-      issues.push(`${file.name}: ${problem}`);
-      return;
-    }
-    selectedImages.push({
-      id: '',
-      file,
-      name: file.name,
-      size: file.size,
-      status: 'queued',
-      objectUrl: URL.createObjectURL(file),
-      url: ''
-    });
-  });
-
-  if (files.length > remainingSlots) {
-    issues.push(`Only ${Math.max(0, remainingSlots)} more image slot(s) remain.`);
-  }
-
-  renderSelectedImages();
-  setMessage(uploadMessage, issues.length ? issues.join(' ') : 'Photos selected. Save or submit to upload them.', issues.length ? 'error' : 'success');
-  photoInput.value = '';
-}
-
-function readFormValues() {
-  return {
-    title: byId('product-name').value.trim(),
-    description: byId('product-description').value.trim(),
-    price: byId('product-price').value,
-    category: byId('product-category').value
-  };
-}
-
-function validateListingValues(values) {
-  if (!values.title || values.title.length > 120) return 'Add a design name (1–120 characters).';
-  if (values.description.length > 2000) return 'Description must be 2,000 characters or fewer.';
-  if (!Number.isFinite(Number(values.price)) || Number(values.price) < 0) return 'Provide a valid price.';
-  if (selectedImages.length < 1) return 'At least one photo is required.';
-  return '';
-}
-
-async function ensureListing(values) {
-  if (currentListingId) {
-    return (await apiRequest(`/api/listings/${encodeURIComponent(currentListingId)}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values)
-    })).item;
-  }
-
-  const existingKey = currentIdempotencyKey || (currentIdempotencyKey = crypto.randomUUID());
-  const payload = await apiRequest('/api/listings', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Idempotency-Key': existingKey },
-    body: JSON.stringify(values)
-  });
-
-  currentListingId = payload.item.id;
-  productIdInput.value = payload.item.id;
-  return payload.item;
-}
-
-async function uploadQueuedImages() {
-  for (const image of selectedImages) {
-    if (!image.file || image.status === 'ready' || image.status === 'uploading') continue;
-    image.status = 'uploading';
-    renderSelectedImages();
-
-    const formData = new FormData();
-    formData.append('image', image.file, image.name);
-    const key = crypto.randomUUID();
-
-    try {
-      const payload = await apiRequest(`/api/listings/${encodeURIComponent(currentListingId)}/images`, {
-        method: 'POST',
-        headers: { 'Idempotency-Key': key },
-        body: formData
-      });
-      const uploaded = payload.item.images.find((entry) => entry.url && !entry.legacy);
-      if (uploaded) {
-        image.id = uploaded.id;
-        image.url = uploaded.url;
-        image.status = 'ready';
-        image.error = '';
-      } else {
-        image.status = 'failed';
-        image.error = 'Upload returned no image reference.';
-      }
-    } catch (error) {
-      image.status = 'failed';
-      image.error = error.message;
-    }
-
-    renderSelectedImages();
-  }
-}
-
-async function handleSave(event) {
-  event.preventDefault();
-  if (!designerToken) {
-    setMessage(uploadMessage, 'Sign in to save a listing.', 'error');
-    return;
-  }
-
-  const values = readFormValues();
-  const validationError = validateListingValues(values);
-  if (validationError) {
-    setMessage(uploadMessage, validationError, 'error');
-    return;
-  }
-
-  const action = event.submitter?.value || 'draft';
-  setMessage(uploadMessage, 'Saving the listing…', 'success');
-
-  try {
-    await ensureListing(values);
-    await uploadQueuedImages();
-    const failed = selectedImages.filter((image) => image.status === 'failed');
-    if (failed.length && action === 'submit') {
-      setMessage(uploadMessage, 'Fix or remove failed images before submitting.', 'error');
-      return;
-    }
-
-    const order = selectedImages.filter((image) => image.status === 'ready' && image.id).map((image) => image.id);
-    if (order.length) {
-      await apiRequest(`/api/listings/${encodeURIComponent(currentListingId)}/images/order`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ imageIds: order })
-      });
-    }
-
-    if (action === 'submit') {
-      const payload = await apiRequest(`/api/listings/${encodeURIComponent(currentListingId)}/submit`, { method: 'POST' });
-      if (payload.item.status === 'pending_review') {
-        setMessage(uploadMessage, 'Submitted for review. It will appear in the Shop after approval.', 'success');
-      } else {
-        setMessage(uploadMessage, 'Published to the Shop gallery.', 'success');
-      }
-      await loadDesignerListings();
-      await loadGallery();
-      resetListingForm();
-      return;
-    }
-
-    setMessage(uploadMessage, 'Draft saved successfully.', 'success');
-    await loadDesignerListings();
-  } catch (error) {
-    setMessage(uploadMessage, error.message, 'error');
-  }
-}
-
-async function loadDesignerListings() {
-  if (!designerToken) return;
-  try {
-    const payload = await apiRequest('/api/my/listings');
-    designerProductsContainer.replaceChildren();
-    const listings = payload.items || [];
-    if (!listings.length) {
-      designerProductsContainer.appendChild(makeElement('p', 'empty-state', 'No listings yet. Create a new design above.'));
-      return;
-    }
-
-    listings.forEach((listing) => {
-      const row = makeElement('div', 'designer-product-item');
-      const images = getProductImages(listing);
-      const preview = document.createElement('img');
-      preview.src = images[0]?.url || '';
-      preview.alt = `${listing.title} preview`;
-      preview.loading = 'lazy';
-      row.appendChild(preview);
-
-      const info = makeElement('div', 'designer-product-info');
-      info.appendChild(makeElement('h4', '', listing.title));
-      info.appendChild(makeElement('p', '', `${images.length} photo${images.length === 1 ? '' : 's'} · ${categoryLabel(listing.category)}`));
-      row.appendChild(info);
-
-      const actions = makeElement('div', 'designer-product-actions');
-      const badge = makeElement('span', 'status-badge', listing.status === 'pending_review' ? 'Pending review' : listing.status === 'published' ? 'Published' : listing.status === 'rejected' ? 'Rejected' : 'Draft');
-      actions.appendChild(badge);
-      const edit = document.createElement('button');
-      edit.type = 'button';
-      edit.textContent = 'Edit';
-      edit.className = 'text-button';
-      edit.addEventListener('click', () => editListing(listing.id));
-      if (['draft', 'rejected'].includes(listing.status)) actions.appendChild(edit);
-      row.appendChild(actions);
-      designerProductsContainer.appendChild(row);
-    });
-  } catch (error) {
-    if (error.status === 401) signOut();
-    setMessage(designerAuthMessage, `Could not load listings: ${error.message}`, 'error');
-  }
-}
-
-async function editListing(listingId) {
-  try {
-    const payload = await apiRequest(`/api/listings/${encodeURIComponent(listingId)}`);
-    const listing = payload.item;
-    currentListingId = listing.id;
-    productIdInput.value = listing.id;
-    byId('product-name').value = listing.title;
-    byId('product-description').value = listing.description;
-    byId('product-price').value = listing.price;
-    byId('product-category').value = listing.category;
-    listingFormTitle.textContent = 'Edit a design';
-
-    selectedImages.forEach((image) => {
-      if (image.objectUrl?.startsWith('blob:')) URL.revokeObjectURL(image.objectUrl);
-    });
-    selectedImages = [];
-    renderSelectedImages();
-
-    const images = getProductImages(listing);
-    images.forEach((image) => {
-      selectedImages.push({
-        id: image.id,
-        file: null,
-        name: image.legacy ? 'Existing image' : 'Existing image',
-        size: 0,
-        status: 'ready',
-        url: image.url,
-        objectUrl: image.url
-      });
-    });
-    renderSelectedImages();
-    setMessage(uploadMessage, 'Draft loaded. You can add new images or remove existing ones.', 'success');
-  } catch (error) {
-    setMessage(uploadMessage, error.message, 'error');
-  }
-}
-
-async function signIn(tokenValue) {
-  const token = tokenValue.trim();
-  if (!token) {
-    setMessage(designerAuthMessage, 'Enter your designer access token.', 'error');
-    return;
-  }
-
-  designerToken = token;
-  try {
-    await apiRequest('/api/session', { method: 'POST' });
-    sessionStorage.setItem('briarDesignerToken', designerToken);
-    loginPanel.classList.add('hidden');
-    designerWorkspace.classList.remove('hidden');
-    setMessage(designerAuthMessage, '', '');
-    await loadDesignerListings();
-  } catch (error) {
-    designerToken = '';
-    sessionStorage.removeItem('briarDesignerToken');
-    setMessage(designerAuthMessage, error.message, 'error');
-  }
-}
-
-function signOut() {
-  designerToken = '';
-  sessionStorage.removeItem('briarDesignerToken');
-  loginPanel.classList.remove('hidden');
-  designerWorkspace.classList.add('hidden');
-  designerTokenInput.value = '';
-  currentListingId = '';
-  productIdInput.value = '';
-  if (productForm) productForm.reset();
-  setMessage(designerAuthMessage, 'Signed out.', 'success');
-}
-
-function applyFilterButtons() {
-  document.querySelectorAll('.filter-button').forEach((button) => {
-    const selected = button.dataset.filter === activeFilter;
-    button.classList.toggle('is-active', selected);
-    button.setAttribute('aria-pressed', String(selected));
-  });
-  renderGallery();
-}
-
-if (designerLoginBtn) designerLoginBtn.addEventListener('click', () => designerModal.showModal());
-if (modalClose) modalClose.addEventListener('click', () => designerModal.close());
-if (designerLoginForm) designerLoginForm.addEventListener('submit', (event) => { event.preventDefault(); signIn(designerTokenInput.value); });
-if (productForm) productForm.addEventListener('submit', handleSave);
-if (photoInput) photoInput.addEventListener('change', (event) => addFiles(event.target.files));
-byId('signout-btn')?.addEventListener('click', signOut);
-byId('new-listing-btn')?.addEventListener('click', resetListingForm);
-byId('product-dialog-close')?.addEventListener('click', () => productDialog.close());
-
-document.querySelectorAll('.filter-button').forEach((button) => {
-  button.addEventListener('click', () => {
-    activeFilter = button.dataset.filter || 'all';
-    applyFilterButtons();
-  });
-});
-
-byId('newsletter-form')?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const email = byId('email');
-  if (email && email.value.trim()) {
-    email.value = '';
-    email.placeholder = 'Thanks for joining!';
-  }
-});
-
-if (designerToken) {
-  loginPanel.classList.add('hidden');
-  designerWorkspace.classList.remove('hidden');
-  signIn(designerToken);
-}
-
-loadGallery();
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f1ea" />
+    <title>House of Briar</title>
+    <meta
+      name="description"
+      content="House of Briar brings together independent designers, one-of-a-kind pieces, and slow-made beauty for everyday living."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand-mark" href="#top" aria-label="House of Briar home">
+            <span class="brand-icon">H</span>
+            <span>
+              <span class="brand-name">House of Briar</span>
+              <span class="brand-tag">Independent designers. One-of-a-kind pieces.</span>
+            </span>
+          </a>
+
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="#shop">Shop</a>
+            <a href="#story">Our Story</a>
+            <a href="#curations">Curations</a>
+            <a href="#journal">Journal</a>
+          </nav>
+
+          <div class="header-actions">
+            <button class="ghost-button" type="button" id="designer-login-btn">Designer portal</button>
+            <button class="primary-button" type="button" aria-label="Shopping bag, 2 items">Cart (2)</button>
+          </div>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">Made by someone, not everyone.</p>
+              <h1>Where independent designers find their people.</h1>
+              <p class="hero-text">
+                House of Briar is a marketplace for thoughtful, one-of-a-kind clothing and handcrafted finds made by independent designers — not mass production.
+              </p>
+              <div class="hero-actions">
+                <a class="primary-button" href="#shop">Shop Bestsellers</a>
+                <a class="secondary-button" href="#story">Learn Our Story</a>
+              </div>
+              <ul class="trust-list" aria-label="Store features">
+                <li>Independent makers</li>
+                <li>Small-batch pieces</li>
+                <li>Thoughtful finds</li>
+              </ul>
+            </div>
+
+            <div class="hero-visual" aria-label="Featured products collage">
+              <div class="card large-card">
+                <span class="card-label">Featured Collection</span>
+                <h2>Botanical Bloom</h2>
+                <p>Soft textures, fresh botanicals, and grounded self-care.</p>
+              </div>
+              <div class="mini-tiles">
+                <div class="tile tile-one"><span>Amber Candle</span></div>
+                <div class="tile tile-two"><span>Hearth Set</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-bar">
+          <div class="container feature-inline">
+            <div><strong>Independent makers</strong><span>Selected for originality, story, and craft</span></div>
+            <div><strong>Thoughtful design</strong><span>Pieces that feel personal, useful, and lasting</span></div>
+            <div><strong>Slow-made beauty</strong><span>Objects that invite ease, ritual, and meaning</span></div>
+          </div>
+        </section>
+
+        <section id="shop" class="product-section">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Shop the market</p>
+                <h2>Best sellers for slow living</h2>
+              </div>
+              <div class="filter-toolbar" role="group" aria-label="Filter products by category">
+                <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-button" type="button" data-filter="home" aria-pressed="false">Home</button>
+                <button class="filter-button" type="button" data-filter="wellness" aria-pressed="false">Wellness</button>
+                <button class="filter-button" type="button" data-filter="gift" aria-pressed="false">Gifts</button>
+                <button class="filter-button" type="button" data-filter="apparel" aria-pressed="false">Apparel</button>
+                <button class="filter-button" type="button" data-filter="accessories" aria-pressed="false">Accessories</button>
+              </div>
+            </div>
+            <p id="shop-status" class="notice" role="status" aria-live="polite">Loading the latest pieces…</p>
+            <div id="product-grid" class="product-grid" aria-label="Shopping gallery"></div>
+          </div>
+        </section>
+
+        <section id="story" class="story-section">
+          <div class="container story-grid">
+            <div class="story-visual"><div class="story-panel"><p class="eyebrow">Our story</p><h2>Rooted in creative living.</h2></div></div>
+            <div class="story-copy">
+              <p>House of Briar began as a love letter to creative humans making beautiful things with care.</p>
+              <p>We celebrate independent designers, slow-made pieces, and the beauty of being different.</p>
+              <a class="secondary-button" href="#journal">Read the Journal</a>
+            </div>
+          </div>
+        </section>
+
+        <section id="curations" class="curation-section">
+          <div class="container">
+            <div class="section-heading narrow"><p class="eyebrow">Curated for everyday rituals</p><h2>What to bring home today</h2></div>
+            <div class="curation-grid">
+              <article class="curation-card"><span class="curation-number">01</span><h3>Morning reset</h3><p>Tea essentials, ceramic accents, and comforting textures.</p></article>
+              <article class="curation-card"><span class="curation-number">02</span><h3>Evening unwind</h3><p>Warm candles, herbal rituals, and soft ambient details.</p></article>
+              <article class="curation-card"><span class="curation-number">03</span><h3>Thoughtful gifting</h3><p>Celebratory bundles for birthdays, new homes, and rituals.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="journal" class="newsletter-section">
+          <div class="container newsletter-box">
+            <div><p class="eyebrow">House notes</p><h2>Sign up for new drops and thoughtful inspiration.</h2></div>
+            <form id="newsletter-form" class="newsletter-form">
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" type="email" placeholder="Your email" aria-label="Email address" />
+              <button class="primary-button" type="submit">Join</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <div><p class="brand-name">House of Briar</p><p class="footer-copy">Independent designers. One-of-a-kind pieces.</p></div>
+          <nav class="footer-links" aria-label="Footer navigation"><a href="#shop">Shop</a><a href="#story">Story</a><a href="#journal">Journal</a></nav>
+          <p class="copyright">© <span id="year"></span> House of Briar</p>
+        </div>
+      </footer>
+    </div>
+
+    <dialog id="designer-modal" class="app-dialog designer-dialog" aria-labelledby="designer-dialog-title">
+      <div class="dialog-header">
+        <div><p class="eyebrow">For independent makers</p><h2 id="designer-dialog-title">Designer studio</h2></div>
+        <button class="icon-button" id="modal-close" type="button" aria-label="Close designer portal">×</button>
+      </div>
+      <section id="designer-login-panel" class="login-panel">
+        <p>Sign in with your designer access token to manage your listings. Your identity is verified by the server.</p>
+        <form id="designer-login-form" class="stack-form">
+          <label for="designer-token">Designer access token</label>
+          <input id="designer-token" name="token" type="password" autocomplete="current-password" required />
+          <button class="primary-button" type="submit">Sign in</button>
+        </form>
+        <p id="designer-auth-message" class="form-message" role="status" aria-live="polite"></p>
+      </section>
+      <section id="designer-workspace" class="hidden" aria-label="Your designer workspace">
+        <div class="studio-toolbar">
+          <div><h3>Your listings</h3><p>Only published listings appear in the public shop.</p></div>
+          <div class="studio-toolbar-actions">
+            <button id="new-listing-btn" class="secondary-button" type="button">New design</button>
+            <button id="signout-btn" class="text-button" type="button">Sign out</button>
+          </div>
+        </div>
+        <div id="designer-products" class="designer-products" aria-live="polite"></div>
+        <hr class="soft-rule" />
+        <form id="product-form" class="stack-form" novalidate>
+          <input id="product-id" name="listingId" type="hidden" />
+          <h3 id="listing-form-title">Add a design</h3>
+          <label for="product-name">Design name</label>
+          <input id="product-name" name="title" maxlength="120" required />
+          <label for="product-description">Description</label>
+          <textarea id="product-description" name="description" maxlength="2000" rows="3"></textarea>
+          <div class="form-row">
+            <div><label for="product-price">Price</label><input id="product-price" name="price" type="number" min="0" step="0.01" required /></div>
+            <div>
+              <label for="product-category">Category</label>
+              <select id="product-category" name="category" required>
+                <option value="apparel">Apparel</option>
+                <option value="accessories">Accessories</option>
+                <option value="home">Home</option>
+                <option value="wellness">Wellness</option>
+                <option value="gift">Gifts</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="upload-heading">
+            <div>
+              <label for="product-photos">Design photos</label>
+              <p>JPEG, PNG, or WebP · up to 10 images · 10 MiB each · first image is the cover.</p>
+            </div>
+          </div>
+          <input id="product-photos" name="images" type="file" accept="image/jpeg,image/png,image/webp" multiple />
+          <p id="upload-message" class="form-message" role="status" aria-live="polite"></p>
+          <div id="photo-preview" class="photo-preview" aria-label="Selected design images"></div>
+          <div class="form-actions">
+            <button class="secondary-button" type="submit" name="action" value="draft">Save draft</button>
+            <button class="primary-button" type="submit" name="action" value="submit">Submit listing</button>
+          </div>
+          <p class="small-print">Submission follows the server’s configured publication policy. Drafts and pending items stay out of the public gallery.</p>
+        </form>
+      </section>
+    </dialog>
+
+    <dialog id="product-dialog" class="app-dialog product-dialog" aria-labelledby="product-detail-title">
+      <div class="dialog-header">
+        <div><p class="eyebrow">House of Briar selection</p><h2 id="product-detail-title">Design details</h2></div>
+        <button id="product-dialog-close" class="icon-button" type="button" aria-label="Close product details">×</button>
+      </div>
+      <div id="product-detail-content" class="product-detail-content"></div>
+    </dialog>
+  </body>
+</html>
