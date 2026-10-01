@@ -372,7 +372,7 @@ function createApp(options = {}) {
       }
       if (metadata.pages && metadata.pages > 1) return fail(res, 415, 'animated_image', 'Animated images are not supported.');
 
-      const count = db.prepare('SELECT COUNT(*) AS count FROM listing_images WHERE listing_id = ? AND upload_status = "ready"').get(row.id).count;
+      const count = db.prepare("SELECT COUNT(*) AS count FROM listing_images WHERE listing_id = ? AND upload_status = 'ready'").get(row.id).count;
       if (count >= MAX_IMAGES) return fail(res, 422, 'image_limit', `A design can have at most ${MAX_IMAGES} images.`);
 
       const imageId = makeId();
@@ -384,7 +384,7 @@ function createApp(options = {}) {
         .toFile(targetPath);
 
       const timestamp = new Date().toISOString();
-      const imagePosition = db.prepare('SELECT COALESCE(MAX(position), -1) + 1 AS next_pos FROM listing_images WHERE listing_id = ? AND upload_status = "ready"').get(row.id).next_pos;
+      const imagePosition = db.prepare("SELECT COALESCE(MAX(position), -1) + 1 AS next_pos FROM listing_images WHERE listing_id = ? AND upload_status = 'ready'").get(row.id).next_pos;
       db.prepare(`
         INSERT INTO listing_images (
           id, listing_id, client_image_key, storage_key, position, mime_type,
@@ -432,7 +432,7 @@ function createApp(options = {}) {
       return fail(res, 422, 'invalid_order', 'Provide an ordered list of image IDs.');
     }
 
-    const currentIds = db.prepare('SELECT id FROM listing_images WHERE listing_id = ? AND upload_status = "ready" ORDER BY position ASC').all(row.id).map((item) => item.id);
+    const currentIds = db.prepare("SELECT id FROM listing_images WHERE listing_id = ? AND upload_status = 'ready' ORDER BY position ASC").all(row.id).map((item) => item.id);
     if (new Set(imageIds).size !== imageIds.length || imageIds.length !== currentIds.length || imageIds.some((id) => !currentIds.includes(id))) {
       return fail(res, 422, 'invalid_order', 'The order must include every image exactly once.');
     }
@@ -450,13 +450,13 @@ function createApp(options = {}) {
   app.delete('/api/listings/:listingId/images/:imageId', authDesigner, (req, res) => {
     const row = ownedEditableListing(req, res);
     if (!row) return;
-    const target = db.prepare('SELECT * FROM listing_images WHERE id = ? AND listing_id = ? AND upload_status = "ready"').get(req.params.imageId, row.id);
+    const target = db.prepare("SELECT * FROM listing_images WHERE id = ? AND listing_id = ? AND upload_status = 'ready'").get(req.params.imageId, row.id);
     if (!target) return fail(res, 404, 'not_found', 'Image not found.');
 
-    const remaining = db.prepare('SELECT id FROM listing_images WHERE listing_id = ? AND upload_status = "ready" AND id != ? ORDER BY position ASC').all(row.id, target.id);
+    const remaining = db.prepare("SELECT id FROM listing_images WHERE listing_id = ? AND upload_status = 'ready' AND id != ? ORDER BY position ASC").all(row.id, target.id);
     const timestamp = new Date().toISOString();
     db.transaction(() => {
-      db.prepare('UPDATE listing_images SET upload_status = "deleted", deleted_at = ? WHERE id = ?').run(timestamp, target.id);
+      db.prepare("UPDATE listing_images SET upload_status = 'deleted', deleted_at = ? WHERE id = ?").run(timestamp, target.id);
       remaining.forEach((image, index) => {
         db.prepare('UPDATE listing_images SET position = ? WHERE id = ?').run(index, image.id);
       });
@@ -473,7 +473,7 @@ function createApp(options = {}) {
     if (!row || row.designer_id !== req.designerId || row.status === 'deleted') return fail(res, 404, 'not_found', 'Listing not found.');
     if (!['draft', 'rejected'].includes(row.status)) return res.json({ item: serializeListing(row, 'private'), reused: true });
 
-    const imageCount = db.prepare('SELECT COUNT(*) AS count FROM listing_images WHERE listing_id = ? AND upload_status = "ready"').get(row.id).count;
+    const imageCount = db.prepare("SELECT COUNT(*) AS count FROM listing_images WHERE listing_id = ? AND upload_status = 'ready'").get(row.id).count;
     if (imageCount < 1) return fail(res, 422, 'images_required', 'Add at least one ready image before submitting.');
 
     const nextStatus = reviewRequired ? 'pending_review' : 'published';
@@ -493,7 +493,7 @@ function createApp(options = {}) {
     if (!row || row.status === 'deleted') return fail(res, 404, 'not_found', 'Listing not found.');
     if (row.status !== 'pending_review') return fail(res, 409, 'invalid_state', 'Only pending listings can be approved.');
 
-    const imageCount = db.prepare('SELECT COUNT(*) AS count FROM listing_images WHERE listing_id = ? AND upload_status = "ready"').get(row.id).count;
+    const imageCount = db.prepare("SELECT COUNT(*) AS count FROM listing_images WHERE listing_id = ? AND upload_status = 'ready'").get(row.id).count;
     if (imageCount < 1) return fail(res, 422, 'images_required', 'This listing has no ready images.');
 
     const timestamp = new Date().toISOString();
