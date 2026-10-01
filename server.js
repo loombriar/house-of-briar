@@ -233,6 +233,7 @@ function createApp(options = {}) {
     limits: { fileSize: MAX_IMAGE_BYTES, files: 1 }
   });
 
+  let app;
   app = express();
   app.disable('x-powered-by');
   app.use(helmet({

@@ -197,16 +197,16 @@ function openProductDetails(item) {
 }
 
 function resetListingForm() {
-  productForm.reset();
+  if (productForm) productForm.reset();
   currentListingId = '';
   currentIdempotencyKey = '';
-  productIdInput.value = '';
-  listingFormTitle.textContent = 'Add a design';
+  if (productIdInput) productIdInput.value = '';
+  if (listingFormTitle) listingFormTitle.textContent = 'Add a design';
   selectedImages.forEach((item) => {
     if (item.objectUrl?.startsWith('blob:')) URL.revokeObjectURL(item.objectUrl);
   });
   selectedImages = [];
-  photoPreview.replaceChildren();
+  if (photoPreview) photoPreview.replaceChildren();
   setMessage(uploadMessage, '', '');
 }
 
@@ -218,6 +218,7 @@ function validateSelectedImage(file) {
 }
 
 function renderSelectedImages() {
+  if (!photoPreview) return;
   photoPreview.replaceChildren();
   selectedImages.forEach((image, index) => {
     const item = makeElement('div', 'photo-preview-item');
@@ -293,7 +294,7 @@ function addFiles(fileList) {
 
   renderSelectedImages();
   setMessage(uploadMessage, issues.length ? issues.join(' ') : 'Photos selected. Save or submit to upload them.', issues.length ? 'error' : 'success');
-  photoInput.value = '';
+  if (photoInput) photoInput.value = '';
 }
 
 function readFormValues() {
@@ -330,7 +331,7 @@ async function ensureListing(values) {
   });
 
   currentListingId = payload.item.id;
-  productIdInput.value = payload.item.id;
+  if (productIdInput) productIdInput.value = payload.item.id;
   return payload.item;
 }
 
@@ -430,10 +431,10 @@ async function loadDesignerListings() {
   try {
     const payload = await apiRequest('/api/my/listings');
     clearDesignerListImagePreviews();
-    designerProductsContainer.replaceChildren();
+    if (designerProductsContainer) designerProductsContainer.replaceChildren();
     const listings = payload.items || [];
     if (!listings.length) {
-      designerProductsContainer.appendChild(makeElement('p', 'empty-state', 'No listings yet. Create a new design above.'));
+      if (designerProductsContainer) designerProductsContainer.appendChild(makeElement('p', 'empty-state', 'No listings yet. Create a new design above.'));
       return;
     }
 
@@ -456,7 +457,7 @@ async function loadDesignerListings() {
       row.appendChild(info);
 
       const actions = makeElement('div', 'designer-product-actions');
-      const badge = makeElement('span', 'status-badge', listing.status === 'pending_review' ? 'Pending review' : listing.status === 'published' ? 'Published' : listing.status === 'rejected' ? 'Rejected' : 'Draft');
+      const badge = makeElement('span', 'status-badge', listing.status === 'pending_review' ? 'Pending review' : listing.status === 'published' ? 'Published' : listing.status === 'rejected' ? 'Rejected' : listing.status === 'draft' ? 'Draft' : 'Archived');
       actions.appendChild(badge);
       const edit = document.createElement('button');
       edit.type = 'button';
@@ -465,7 +466,7 @@ async function loadDesignerListings() {
       edit.addEventListener('click', () => editListing(listing.id));
       if (['draft', 'rejected'].includes(listing.status)) actions.appendChild(edit);
       row.appendChild(actions);
-      designerProductsContainer.appendChild(row);
+      if (designerProductsContainer) designerProductsContainer.appendChild(row);
     }
   } catch (error) {
     if (error.status === 401) signOut();
@@ -478,12 +479,12 @@ async function editListing(listingId) {
     const payload = await apiRequest(`/api/listings/${encodeURIComponent(listingId)}`);
     const listing = payload.item;
     currentListingId = listing.id;
-    productIdInput.value = listing.id;
-    byId('product-name').value = listing.title;
-    byId('product-description').value = listing.description;
-    byId('product-price').value = listing.price;
-    byId('product-category').value = listing.category;
-    listingFormTitle.textContent = 'Edit a design';
+    if (productIdInput) productIdInput.value = listing.id;
+    if (byId('product-name')) byId('product-name').value = listing.title;
+    if (byId('product-description')) byId('product-description').value = listing.description;
+    if (byId('product-price')) byId('product-price').value = listing.price;
+    if (byId('product-category')) byId('product-category').value = listing.category;
+    if (listingFormTitle) listingFormTitle.textContent = 'Edit a design';
 
     selectedImages.forEach((image) => {
       if (image.objectUrl?.startsWith('blob:')) URL.revokeObjectURL(image.objectUrl);
@@ -527,8 +528,8 @@ async function signIn(tokenValue) {
   try {
     await apiRequest('/api/session', { method: 'POST' });
     sessionStorage.setItem('briarDesignerToken', designerToken);
-    loginPanel.classList.add('hidden');
-    designerWorkspace.classList.remove('hidden');
+    if (loginPanel) loginPanel.classList.add('hidden');
+    if (designerWorkspace) designerWorkspace.classList.remove('hidden');
     setMessage(designerAuthMessage, '', '');
     await loadDesignerListings();
   } catch (error) {
@@ -541,9 +542,9 @@ async function signIn(tokenValue) {
 function signOut() {
   designerToken = '';
   sessionStorage.removeItem('briarDesignerToken');
-  loginPanel.classList.remove('hidden');
-  designerWorkspace.classList.add('hidden');
-  designerTokenInput.value = '';
+  if (loginPanel) loginPanel.classList.remove('hidden');
+  if (designerWorkspace) designerWorkspace.classList.add('hidden');
+  if (designerTokenInput) designerTokenInput.value = '';
   clearDesignerListImagePreviews();
   resetListingForm();
   setMessage(designerAuthMessage, 'Signed out.', 'success');
@@ -584,8 +585,8 @@ byId('newsletter-form')?.addEventListener('submit', (event) => {
 });
 
 if (designerToken) {
-  loginPanel.classList.add('hidden');
-  designerWorkspace.classList.remove('hidden');
+  if (loginPanel) loginPanel.classList.add('hidden');
+  if (designerWorkspace) designerWorkspace.classList.remove('hidden');
   signIn(designerToken);
 }
 
