@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">House of Briar</title>
+  <desc id="desc">A gold briar star on a deep forest background</desc>
+  <rect width="512" height="512" rx="112" fill="#101912"/>
+  <circle cx="256" cy="256" r="150" fill="#1e3026" stroke="#c9ae72" stroke-width="8"/>
+  <path d="M256 112l27 94 91 50-91 50-27 94-27-94-91-50 91-50 27-94z" fill="#c9ae72"/>
+  <path d="M256 167v178M167 256h178" stroke="#f4ead5" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+  <circle cx="256" cy="256" r="19" fill="#101912"/>
+</svg>

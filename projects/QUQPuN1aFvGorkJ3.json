@@ -1,0 +1,1420 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "3e2f8b4f-61c4-424b-8815-fda0735448e0",
+        "text": {
+          "ops": [
+            {
+              "insert": "Private Designer Listings"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": null,
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "5218c607-62a2-466e-b66d-c28a607eaf50",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Tulip Dress",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@desig1": "Loom Briar",
+              "@size01": "Large",
+              "@ownr1": "7159224",
+              "@price1": 295,
+              "@descr1": "A one-of-a-kind upcycled Tulip Dress with a sculpted floral bodice and a flowing abstract botanical skirt. Made by Loom Briar in a size Large.",
+              "@gally1": "https://files.taskade.com/space-files/dfa11d10-4b73-432f-afba-40a94ed855b7/original/tulips-front.png\nhttps://files.taskade.com/space-files/b4b416e9-4a6d-4150-9600-216fe6d1240d/original/tulips-angle.png\nhttps://files.taskade.com/space-files/d97b38e6-dd6c-43e0-9e1a-eb1ff6e771c4/original/tulips-back.png\nhttps://files.taskade.com/space-files/31b90e78-f441-49ed-a7cd-71dd8091dae4/original/4eb67f7d-151e-4bca-bd57-a0a25e424619.png",
+              "@email1": "geekgirl1039@gmail.com",
+              "@image1": "https://files.taskade.com/space-files/dfa11d10-4b73-432f-afba-40a94ed855b7/original/tulips-front.png",
+              "@categ1": {
+                "type": "Select",
+                "optionId": "one-of-a-kind"
+              },
+              "@tags01": "Upcycled",
+              "@stat1": {
+                "type": "Select",
+                "optionId": "available"
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "cedda68d-21bf-47fa-a69c-b84047503337",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Lavender Palm Dress",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@desig1": "Loom Briar",
+              "@size01": "Large",
+              "@ownr1": "7159224",
+              "@price1": 295,
+              "@descr1": "A sculpted lavender bodice paired with a layered asymmetrical skirt, made as wearable art with a dramatic, one-of-a-kind silhouette.",
+              "@gally1": "https://files.taskade.com/space-files/e311336e-2961-42dc-a152-f126c36102ae/original/image.png\nhttps://files.taskade.com/space-files/671f9847-199f-4193-a359-d432ae85ed35/original/image.png",
+              "@email1": "geekgirl1039@gmail.com",
+              "@image1": "https://files.taskade.com/space-files/e311336e-2961-42dc-a152-f126c36102ae/original/image.png",
+              "@categ1": {
+                "type": "Select",
+                "optionId": "one-of-a-kind"
+              },
+              "@tags01": "Handmade, Statement piece, Vintage-inspired",
+              "@stat1": {
+                "type": "Select",
+                "optionId": "available"
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "c8092b6b-c98b-46f6-b8da-8c31f98cf99f",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Velvet Top",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": true,
+            "attributes": {
+              "@desig1": "Loom Briar",
+              "@size01": "Large",
+              "@ownr1": "7159224",
+              "@price1": 195,
+              "@descr1": "An upcycled velvet top with hand-beaded floral details and sheer floral panels.",
+              "@gally1": "https://files.taskade.com/space-files/76c87787-ab1b-43cd-bc16-8265c54185ce/original/velvetfront.png\nhttps://files.taskade.com/space-files/037a3869-c50e-49f3-bb98-f2f922324bb5/original/velvetclose.png\nhttps://files.taskade.com/space-files/e5d4b237-51b3-4e76-83a3-80bf59411028/original/velvetback.png",
+              "@email1": "geekgirl1039@gmail.com",
+              "@image1": "https://files.taskade.com/space-files/76c87787-ab1b-43cd-bc16-8265c54185ce/original/velvetfront.png",
+              "@categ1": {
+                "type": "Select",
+                "optionId": "one-of-a-kind"
+              },
+              "@tags01": "Velvet, Upcycled, Hand-beaded",
+              "@stat1": {
+                "type": "Select",
+                "optionId": "available"
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "f6539615-dcc1-44c3-852b-20c6be09a8de",
+            "text": {
+              "ops": []
+            },
+            "format": null,
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@desig1": "satisfashionfix",
+              "@size01": "Large",
+              "@ownr1": "user:f5cc0201-e1e3-43af-9bd6-16f4d30ddb83",
+              "@price1": 195,
+              "@descr1": "One-of-a-kind velvet top with real Howlite and agate beads.",
+              "@gally1": "",
+              "@email1": "satisfashionfix@gmail.com",
+              "@image1": "",
+              "@categ1": {
+                "type": "Select",
+                "optionId": "one-of-a-kind"
+              },
+              "@tags01": "New listing",
+              "@stat1": {
+                "type": "Select",
+                "optionId": "available"
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "2ba5c38b-73be-4541-a399-209fa0488d1b",
+            "text": {
+              "ops": [
+                {
+                  "insert": "add option for multiple photo downloads for designers"
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "cc0ec9fd-72b4-42e5-a922-c38070d89b7b",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Allow multiple photo uploads per design item (currently limited to one)."
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "text",
+              "children": "text"
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "dd6f238e-bc8a-4547-9c88-b34c8db748d9",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Frontend: Replace the single-image picker with multi-image selection and upload for each design item. Show per-image previews, upload progress, and clear remove/retry controls."
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "text",
+                  "children": "text"
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "a52292a0-bbb3-4f30-b446-cea6a44e511a",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Backend: Update the listing API and storage model to accept, validate, and store multiple images per design item, return all image references, and keep existing single-image listings compatible."
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "text",
+                  "children": "text"
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "6cbecce6-8ea7-4929-80e4-b3d3afe0afff",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Ensure designer-uploaded designs appear in the Shopping Gallery."
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "text",
+              "children": "text"
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "ab46667b-de80-45e3-8029-05e35da9c7ae",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Frontend: Ensure the Shopping Gallery displays designs after a designer uploads them, including the uploaded images and listing details; refresh the gallery view so new designs appear without requiring a manual workaround."
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "text",
+                  "children": "text"
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "a2114d47-6d51-4542-8d4e-87bac5309d62",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Backend: Ensure designer uploads are saved as gallery-visible listings with the correct designer, images, and visibility/publishing state, and that the gallery query returns them."
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "text",
+                  "children": "text"
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "views": {
+      "list": {
+        "id": "list",
+        "type": "list",
+        "rank": "A",
+        "displayedFields": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7"
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A"
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V"
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c"
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k"
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s"
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t"
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u"
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF"
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF"
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x"
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y"
+          },
+          "/attributes/@ownr1": {
+            "id": "/attributes/@ownr1",
+            "fieldPath": "/attributes/@ownr1",
+            "rank": "z"
+          },
+          "/attributes/@email1": {
+            "id": "/attributes/@email1",
+            "fieldPath": "/attributes/@email1",
+            "rank": "zV"
+          },
+          "/attributes/@desig1": {
+            "id": "/attributes/@desig1",
+            "fieldPath": "/attributes/@desig1",
+            "rank": "zk"
+          },
+          "/attributes/@price1": {
+            "id": "/attributes/@price1",
+            "fieldPath": "/attributes/@price1",
+            "rank": "zs"
+          },
+          "/attributes/@descr1": {
+            "id": "/attributes/@descr1",
+            "fieldPath": "/attributes/@descr1",
+            "rank": "zw"
+          },
+          "/attributes/@stat1": {
+            "id": "/attributes/@stat1",
+            "fieldPath": "/attributes/@stat1",
+            "rank": "zy"
+          },
+          "/attributes/@categ1": {
+            "id": "/attributes/@categ1",
+            "fieldPath": "/attributes/@categ1",
+            "rank": "zz"
+          },
+          "/attributes/@size01": {
+            "id": "/attributes/@size01",
+            "fieldPath": "/attributes/@size01",
+            "rank": "zzV"
+          },
+          "/attributes/@image1": {
+            "id": "/attributes/@image1",
+            "fieldPath": "/attributes/@image1",
+            "rank": "zzk"
+          },
+          "/attributes/@tags01": {
+            "id": "/attributes/@tags01",
+            "fieldPath": "/attributes/@tags01",
+            "rank": "zzs"
+          },
+          "8f523965-b860-4498-a024-ed67a6c53325": {
+            "id": "8f523965-b860-4498-a024-ed67a6c53325",
+            "fieldPath": "/attributes/@gally1",
+            "rank": "zzw"
+          }
+        }
+      },
+      "board": {
+        "id": "board",
+        "type": "board",
+        "rank": "B",
+        "displayedFields": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7"
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A"
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V"
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c"
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k"
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s"
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t"
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u"
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF"
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF"
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x"
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y"
+          },
+          "/attributes/@ownr1": {
+            "id": "/attributes/@ownr1",
+            "fieldPath": "/attributes/@ownr1",
+            "rank": "z"
+          },
+          "/attributes/@email1": {
+            "id": "/attributes/@email1",
+            "fieldPath": "/attributes/@email1",
+            "rank": "zV"
+          },
+          "/attributes/@desig1": {
+            "id": "/attributes/@desig1",
+            "fieldPath": "/attributes/@desig1",
+            "rank": "zk"
+          },
+          "/attributes/@price1": {
+            "id": "/attributes/@price1",
+            "fieldPath": "/attributes/@price1",
+            "rank": "zs"
+          },
+          "/attributes/@descr1": {
+            "id": "/attributes/@descr1",
+            "fieldPath": "/attributes/@descr1",
+            "rank": "zw"
+          },
+          "/attributes/@stat1": {
+            "id": "/attributes/@stat1",
+            "fieldPath": "/attributes/@stat1",
+            "rank": "zy"
+          },
+          "/attributes/@categ1": {
+            "id": "/attributes/@categ1",
+            "fieldPath": "/attributes/@categ1",
+            "rank": "zz"
+          },
+          "/attributes/@size01": {
+            "id": "/attributes/@size01",
+            "fieldPath": "/attributes/@size01",
+            "rank": "zzV"
+          },
+          "/attributes/@image1": {
+            "id": "/attributes/@image1",
+            "fieldPath": "/attributes/@image1",
+            "rank": "zzk"
+          },
+          "/attributes/@tags01": {
+            "id": "/attributes/@tags01",
+            "fieldPath": "/attributes/@tags01",
+            "rank": "zzs"
+          },
+          "2c5f331e-6ed4-45a8-b00b-f94ecf915e0e": {
+            "id": "2c5f331e-6ed4-45a8-b00b-f94ecf915e0e",
+            "fieldPath": "/attributes/@gally1",
+            "rank": "zzw"
+          }
+        }
+      },
+      "mindmap": {
+        "id": "mindmap",
+        "type": "mindmap",
+        "rank": "D",
+        "displayedFields": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7"
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A"
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V"
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c"
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k"
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s"
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t"
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u"
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF"
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF"
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x"
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y"
+          },
+          "/attributes/@ownr1": {
+            "id": "/attributes/@ownr1",
+            "fieldPath": "/attributes/@ownr1",
+            "rank": "z"
+          },
+          "/attributes/@email1": {
+            "id": "/attributes/@email1",
+            "fieldPath": "/attributes/@email1",
+            "rank": "zV"
+          },
+          "/attributes/@desig1": {
+            "id": "/attributes/@desig1",
+            "fieldPath": "/attributes/@desig1",
+            "rank": "zk"
+          },
+          "/attributes/@price1": {
+            "id": "/attributes/@price1",
+            "fieldPath": "/attributes/@price1",
+            "rank": "zs"
+          },
+          "/attributes/@descr1": {
+            "id": "/attributes/@descr1",
+            "fieldPath": "/attributes/@descr1",
+            "rank": "zw"
+          },
+          "/attributes/@stat1": {
+            "id": "/attributes/@stat1",
+            "fieldPath": "/attributes/@stat1",
+            "rank": "zy"
+          },
+          "/attributes/@categ1": {
+            "id": "/attributes/@categ1",
+            "fieldPath": "/attributes/@categ1",
+            "rank": "zz"
+          },
+          "/attributes/@size01": {
+            "id": "/attributes/@size01",
+            "fieldPath": "/attributes/@size01",
+            "rank": "zzV"
+          },
+          "/attributes/@image1": {
+            "id": "/attributes/@image1",
+            "fieldPath": "/attributes/@image1",
+            "rank": "zzk"
+          },
+          "/attributes/@tags01": {
+            "id": "/attributes/@tags01",
+            "fieldPath": "/attributes/@tags01",
+            "rank": "zzs"
+          },
+          "3670d12f-d09e-4444-b5d2-114e5c592f08": {
+            "id": "3670d12f-d09e-4444-b5d2-114e5c592f08",
+            "fieldPath": "/attributes/@gally1",
+            "rank": "zzw"
+          }
+        }
+      },
+      "orgchart": {
+        "id": "orgchart",
+        "type": "orgchart",
+        "rank": "E",
+        "displayedFields": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7"
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A"
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V"
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c"
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k"
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s"
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t"
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u"
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF"
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF"
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x"
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y"
+          },
+          "/attributes/@ownr1": {
+            "id": "/attributes/@ownr1",
+            "fieldPath": "/attributes/@ownr1",
+            "rank": "z"
+          },
+          "/attributes/@email1": {
+            "id": "/attributes/@email1",
+            "fieldPath": "/attributes/@email1",
+            "rank": "zV"
+          },
+          "/attributes/@desig1": {
+            "id": "/attributes/@desig1",
+            "fieldPath": "/attributes/@desig1",
+            "rank": "zk"
+          },
+          "/attributes/@price1": {
+            "id": "/attributes/@price1",
+            "fieldPath": "/attributes/@price1",
+            "rank": "zs"
+          },
+          "/attributes/@descr1": {
+            "id": "/attributes/@descr1",
+            "fieldPath": "/attributes/@descr1",
+            "rank": "zw"
+          },
+          "/attributes/@stat1": {
+            "id": "/attributes/@stat1",
+            "fieldPath": "/attributes/@stat1",
+            "rank": "zy"
+          },
+          "/attributes/@categ1": {
+            "id": "/attributes/@categ1",
+            "fieldPath": "/attributes/@categ1",
+            "rank": "zz"
+          },
+          "/attributes/@size01": {
+            "id": "/attributes/@size01",
+            "fieldPath": "/attributes/@size01",
+            "rank": "zzV"
+          },
+          "/attributes/@image1": {
+            "id": "/attributes/@image1",
+            "fieldPath": "/attributes/@image1",
+            "rank": "zzk"
+          },
+          "/attributes/@tags01": {
+            "id": "/attributes/@tags01",
+            "fieldPath": "/attributes/@tags01",
+            "rank": "zzs"
+          },
+          "cb045f93-43d8-4dd1-9a34-a1b64e96110a": {
+            "id": "cb045f93-43d8-4dd1-9a34-a1b64e96110a",
+            "fieldPath": "/attributes/@gally1",
+            "rank": "zzw"
+          }
+        }
+      },
+      "gantt": {
+        "id": "gantt",
+        "type": "gantt",
+        "rank": "F",
+        "columns": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7",
+            "width": 480
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A",
+            "hidden": true
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F",
+            "hidden": true
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N",
+            "hidden": true
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V",
+            "hidden": true
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c",
+            "hidden": true
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k",
+            "hidden": true
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s",
+            "hidden": true
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t",
+            "hidden": true
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u",
+            "hidden": true
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF",
+            "hidden": true
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF",
+            "hidden": true
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x",
+            "hidden": true
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y",
+            "hidden": true
+          },
+          "/attributes/@ownr1": {
+            "id": "/attributes/@ownr1",
+            "fieldPath": "/attributes/@ownr1",
+            "rank": "z",
+            "hidden": false
+          },
+          "/attributes/@email1": {
+            "id": "/attributes/@email1",
+            "fieldPath": "/attributes/@email1",
+            "rank": "zV",
+            "hidden": false
+          },
+          "/attributes/@desig1": {
+            "id": "/attributes/@desig1",
+            "fieldPath": "/attributes/@desig1",
+            "rank": "zk",
+            "hidden": false
+          },
+          "/attributes/@price1": {
+            "id": "/attributes/@price1",
+            "fieldPath": "/attributes/@price1",
+            "rank": "zs",
+            "hidden": false
+          },
+          "/attributes/@descr1": {
+            "id": "/attributes/@descr1",
+            "fieldPath": "/attributes/@descr1",
+            "rank": "zw",
+            "hidden": false
+          },
+          "/attributes/@stat1": {
+            "id": "/attributes/@stat1",
+            "fieldPath": "/attributes/@stat1",
+            "rank": "zy",
+            "hidden": false
+          },
+          "/attributes/@categ1": {
+            "id": "/attributes/@categ1",
+            "fieldPath": "/attributes/@categ1",
+            "rank": "zz",
+            "hidden": false
+          },
+          "/attributes/@size01": {
+            "id": "/attributes/@size01",
+            "fieldPath": "/attributes/@size01",
+            "rank": "zzV",
+            "hidden": false
+          },
+          "/attributes/@image1": {
+            "id": "/attributes/@image1",
+            "fieldPath": "/attributes/@image1",
+            "rank": "zzk",
+            "hidden": false
+          },
+          "/attributes/@tags01": {
+            "id": "/attributes/@tags01",
+            "fieldPath": "/attributes/@tags01",
+            "rank": "zzs",
+            "hidden": false
+          },
+          "3493a109-7175-422f-a3d8-cc1e2aa920c9": {
+            "id": "3493a109-7175-422f-a3d8-cc1e2aa920c9",
+            "fieldPath": "/attributes/@gally1",
+            "rank": "zzw"
+          }
+        }
+      },
+      "table": {
+        "id": "table",
+        "type": "table",
+        "rank": "V",
+        "columns": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7",
+            "width": 480
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A",
+            "hidden": true
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F",
+            "hidden": true
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N",
+            "hidden": true
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V",
+            "hidden": true
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c",
+            "hidden": true
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k",
+            "hidden": true
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s",
+            "hidden": true
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t",
+            "hidden": true
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u",
+            "hidden": true
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF",
+            "hidden": true
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF",
+            "hidden": true
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x",
+            "hidden": true
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y",
+            "hidden": true
+          },
+          "/attributes/@ownr1": {
+            "id": "/attributes/@ownr1",
+            "fieldPath": "/attributes/@ownr1",
+            "rank": "z",
+            "hidden": false
+          },
+          "/attributes/@email1": {
+            "id": "/attributes/@email1",
+            "fieldPath": "/attributes/@email1",
+            "rank": "zV",
+            "hidden": false
+          },
+          "/attributes/@desig1": {
+            "id": "/attributes/@desig1",
+            "fieldPath": "/attributes/@desig1",
+            "rank": "zk",
+            "hidden": false
+          },
+          "/attributes/@price1": {
+            "id": "/attributes/@price1",
+            "fieldPath": "/attributes/@price1",
+            "rank": "zs",
+            "hidden": false
+          },
+          "/attributes/@descr1": {
+            "id": "/attributes/@descr1",
+            "fieldPath": "/attributes/@descr1",
+            "rank": "zw",
+            "hidden": false
+          },
+          "/attributes/@stat1": {
+            "id": "/attributes/@stat1",
+            "fieldPath": "/attributes/@stat1",
+            "rank": "zy",
+            "hidden": false
+          },
+          "/attributes/@categ1": {
+            "id": "/attributes/@categ1",
+            "fieldPath": "/attributes/@categ1",
+            "rank": "zz",
+            "hidden": false
+          },
+          "/attributes/@size01": {
+            "id": "/attributes/@size01",
+            "fieldPath": "/attributes/@size01",
+            "rank": "zzV",
+            "hidden": false
+          },
+          "/attributes/@image1": {
+            "id": "/attributes/@image1",
+            "fieldPath": "/attributes/@image1",
+            "rank": "zzk",
+            "hidden": false
+          },
+          "/attributes/@tags01": {
+            "id": "/attributes/@tags01",
+            "fieldPath": "/attributes/@tags01",
+            "rank": "zzs",
+            "hidden": false
+          },
+          "00a1583e-9252-4d6b-a77f-40e145df054e": {
+            "id": "00a1583e-9252-4d6b-a77f-40e145df054e",
+            "fieldPath": "/attributes/@gally1",
+            "rank": "zzw"
+          }
+        }
+      },
+      "actionsheet": {
+        "id": "actionsheet",
+        "type": "actionsheet",
+        "rank": "F",
+        "columns": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7",
+            "width": 480
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A",
+            "hidden": true
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V",
+            "hidden": true
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c",
+            "hidden": true
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k",
+            "hidden": true
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s",
+            "hidden": true
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t",
+            "hidden": true
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u",
+            "hidden": true
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF",
+            "hidden": true
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF",
+            "hidden": true
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x",
+            "hidden": true
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y",
+            "hidden": true
+          },
+          "fc4895fc-e3f2-4e1e-863b-31e859e9a71c": {
+            "id": "fc4895fc-e3f2-4e1e-863b-31e859e9a71c",
+            "fieldPath": "/attributes/@gally1",
+            "rank": "z"
+          }
+        }
+      }
+    },
+    "fields": {
+      "@desig1": {
+        "type": "string",
+        "displayName": "Designer"
+      },
+      "@size01": {
+        "type": "string",
+        "displayName": "Size"
+      },
+      "@ownr1": {
+        "type": "string",
+        "displayName": "Owner ID"
+      },
+      "@price1": {
+        "type": "number",
+        "displayName": "Price",
+        "render": {
+          "type": "text"
+        },
+        "format": {
+          "type": "decimal"
+        }
+      },
+      "@descr1": {
+        "type": "string",
+        "displayName": "Description"
+      },
+      "@gally1": {
+        "type": "string",
+        "displayName": "Gallery URLs"
+      },
+      "@email1": {
+        "type": "string",
+        "displayName": "Designer Email"
+      },
+      "@image1": {
+        "type": "string",
+        "displayName": "Image URL"
+      },
+      "@categ1": {
+        "type": "Select",
+        "displayName": "Category",
+        "options": {
+          "one-of-a-kind": {
+            "id": "one-of-a-kind",
+            "name": "One-of-a-kind",
+            "color": "#8f7a58",
+            "rank": "0"
+          },
+          "upcycled": {
+            "id": "upcycled",
+            "name": "Upcycled",
+            "color": "#6f8f72",
+            "rank": "1"
+          },
+          "vintage-inspired": {
+            "id": "vintage-inspired",
+            "name": "Vintage-inspired",
+            "color": "#8b7399",
+            "rank": "2"
+          },
+          "handmade": {
+            "id": "handmade",
+            "name": "Handmade",
+            "color": "#b37a5b",
+            "rank": "3"
+          },
+          "botanical": {
+            "id": "botanical",
+            "name": "Botanical",
+            "color": "#668b6b",
+            "rank": "4"
+          },
+          "limited-edition": {
+            "id": "limited-edition",
+            "name": "Limited edition",
+            "color": "#7d7d9d",
+            "rank": "5"
+          },
+          "statement-piece": {
+            "id": "statement-piece",
+            "name": "Statement piece",
+            "color": "#a06f7d",
+            "rank": "6"
+          }
+        }
+      },
+      "@tags01": {
+        "type": "string",
+        "displayName": "Tags"
+      },
+      "@stat1": {
+        "type": "Select",
+        "displayName": "Status",
+        "options": {
+          "draft": {
+            "id": "draft",
+            "name": "Draft",
+            "color": "#8f7a58",
+            "rank": "0"
+          },
+          "available": {
+            "id": "available",
+            "name": "Available",
+            "color": "#6f8f72",
+            "rank": "1"
+          },
+          "sold": {
+            "id": "sold",
+            "name": "Sold",
+            "color": "#a56f6f",
+            "rank": "2"
+          }
+        }
+      }
+    }
+  },
+  "preferences": {
+    "defaultView": "table",
+    "avatar": {
+      "type": "emoji",
+      "value": "💾"
+    }
+  }
+}

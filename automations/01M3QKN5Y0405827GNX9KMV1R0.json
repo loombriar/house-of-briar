@@ -1,0 +1,65 @@
+{
+  "version": "2",
+  "flowTitle": "GitHub Issues to Tasks",
+  "trigger": {
+    "valid": false,
+    "displayName": "New Issue",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-piece-github",
+      "pieceVersion": "BLANK",
+      "triggerName": "new_issue",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "3ba5d3f7-4519-4979-8502-c8fe4bd6ac07",
+      "valid": false,
+      "displayName": "Categorize the Issue",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "BLANK",
+        "actionName": "ai.categorize",
+        "input": {}
+      }
+    },
+    {
+      "name": "6f3a0620-5551-48f0-b5d6-372326188d70",
+      "valid": false,
+      "displayName": "Create Task",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.create",
+        "input": {}
+      }
+    },
+    {
+      "name": "380f4167-9514-4591-b0f0-ee8197fedca8",
+      "valid": false,
+      "displayName": "Assign Owner",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.assign",
+        "input": {}
+      }
+    },
+    {
+      "name": "480e93fd-d861-4e5c-b659-7c5418084446",
+      "valid": false,
+      "displayName": "Complete a task",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "markTaskAsCompleted",
+        "input": {}
+      }
+    }
+  ]
+}

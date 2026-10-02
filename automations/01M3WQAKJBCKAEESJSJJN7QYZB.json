@@ -1,0 +1,41 @@
+{
+  "version": "2",
+  "flowTitle": "New Customer Onboarding",
+  "trigger": {
+    "valid": false,
+    "displayName": "New Customer",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-piece-stripe",
+      "pieceVersion": "BLANK",
+      "triggerName": "new_customer",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "49efdb5c-ee1d-435c-9110-96b6b7a22d37",
+      "valid": false,
+      "displayName": "Add a task",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.create",
+        "input": {}
+      }
+    },
+    {
+      "name": "994ed4e7-cb9f-4a24-a32b-c3da0b2718e2",
+      "valid": false,
+      "displayName": "Send Channel Message",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-piece-slack",
+        "pieceVersion": "BLANK",
+        "actionName": "chat.postMessage",
+        "input": {}
+      }
+    }
+  ]
+}

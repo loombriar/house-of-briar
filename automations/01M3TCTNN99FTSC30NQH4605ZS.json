@@ -1,0 +1,80 @@
+{
+  "version": "2",
+  "flowTitle": "new sale",
+  "trigger": {
+    "valid": false,
+    "displayName": "New Payment",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-piece-stripe",
+      "pieceVersion": "BLANK",
+      "triggerName": "new_payment",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "3b399014-d49e-46cb-ac43-677f112bb72b",
+      "valid": false,
+      "displayName": "Create Checkout Session",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-piece-stripe",
+        "pieceVersion": "BLANK",
+        "actionName": "createCheckoutSession",
+        "input": {
+          "mode": "payment",
+          "automatic_tax_enabled": "true"
+        }
+      }
+    },
+    {
+      "name": "5eeee313-e519-4fe4-ac8b-6416fbb86d98",
+      "valid": false,
+      "displayName": "Create Customer",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-piece-stripe",
+        "pieceVersion": "BLANK",
+        "actionName": "createCustomer",
+        "input": {}
+      }
+    },
+    {
+      "name": "2e8f3a77-b7b3-4a71-9298-01feb79c6d7b",
+      "valid": false,
+      "displayName": "Create Payment Intent",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-piece-stripe",
+        "pieceVersion": "BLANK",
+        "actionName": "createPaymentIntent",
+        "input": {}
+      }
+    },
+    {
+      "name": "60050313-1ccd-45dd-8961-8205bf353efb",
+      "valid": false,
+      "displayName": "Create Payment Link",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-piece-stripe",
+        "pieceVersion": "BLANK",
+        "actionName": "createPaymentLink",
+        "input": {}
+      }
+    },
+    {
+      "name": "58f273b0-a67c-4648-9dd4-f35ab83a1859",
+      "valid": false,
+      "displayName": "Send Invoice",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-piece-stripe",
+        "pieceVersion": "BLANK",
+        "actionName": "sendInvoice",
+        "input": {}
+      }
+    }
+  ]
+}

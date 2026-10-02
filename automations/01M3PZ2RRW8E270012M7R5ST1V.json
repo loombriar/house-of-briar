@@ -1,0 +1,44 @@
+{
+  "version": "2",
+  "flowTitle": "New Marketplace Listing Note",
+  "trigger": {
+    "valid": false,
+    "displayName": "When a marketplace listing is added",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-internalpiece-taskade",
+      "pieceVersion": "1.0.0",
+      "triggerName": "task.added",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "ce68efef-20a8-4ae4-a923-765cd6b2d8b0",
+      "valid": false,
+      "displayName": "Acknowledge the new listing",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "1.0.0",
+        "actionName": "task.addComment",
+        "input": {
+          "nodeId": "{{ trigger[\"nodeId\"] }}",
+          "content": "House of Briar received this listing and it is ready for review.",
+          "projectId": {
+            "type": "flow-template-variable-input-type",
+            "id": "Jh4hJjUDzfNiMHaH"
+          }
+        }
+      }
+    }
+  ],
+  "variables": {
+    "Jh4hJjUDzfNiMHaH": {
+      "id": "Jh4hJjUDzfNiMHaH",
+      "rank": "V",
+      "type": "string",
+      "format": "taskade-project-id"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "version": "2",
+  "flowTitle": "GitHub Issues to Tasks",
+  "trigger": {
+    "valid": false,
+    "displayName": "New Release",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-piece-github",
+      "pieceVersion": "BLANK",
+      "triggerName": "new_release",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "70b7acb6-c804-4fe5-a003-a0d9d8b03894",
+      "valid": true,
+      "displayName": "Categorize the Issue",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "BLANK",
+        "actionName": "ai.categorize",
+        "input": {
+          "input": "check for issues",
+          "output": {
+            "type": "custom"
+          }
+        }
+      }
+    },
+    {
+      "name": "18600c00-9717-413f-b28c-6ba5f714d02c",
+      "valid": false,
+      "displayName": "Attach a file",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.attachFile",
+        "input": {
+          "projectId": "{{ trigger['name'] }}"
+        }
+      }
+    },
+    {
+      "name": "375cbe0a-57b1-4004-96cd-6367c657b9e9",
+      "valid": true,
+      "displayName": "Complete a task",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "markTaskAsCompleted",
+        "input": {
+          "nodeId": "update git",
+          "projectId": "{{ 18600c00-9717-413f-b28c-6ba5f714d02c['projectId'] }}"
+        }
+      }
+    }
+  ]
+}

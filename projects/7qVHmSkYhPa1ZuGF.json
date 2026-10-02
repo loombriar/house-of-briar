@@ -1,0 +1,248 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "84fd8ae7-85bd-4e59-a5b7-33c67496221c",
+        "text": {
+          "ops": [
+            {
+              "insert": "catagories"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": null,
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "ba92d0d7-d7cb-4328-9548-d63fb31127ef",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Catogorie is.."
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "6b3a8b9f-e740-45cc-b9af-b7fbeceea18c",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Dresses"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "alpha",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "1358702b-dd33-45f4-a1ad-68d1d2fb5f32",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Jumpsuits"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "alpha",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "2988942f-5b04-439a-853e-9aef957cc858",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Tops"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "alpha",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "a64600cb-a21d-4cc3-a2b9-7072331ce144",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Skirts"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "alpha",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "d59ab954-a230-412c-a5e5-ad3306a339e9",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Pants"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "alpha",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "c33bd390-6972-45cc-85b8-8f9b47de4732",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Accessories"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "alpha",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "884ad32e-a9be-4d0f-84cd-12eb0ff1c669",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "alpha",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "db735a9b-bc2a-4f18-98b5-34f2917d9a28",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Catogory window"
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": null,
+            "collapsed": false,
+            "completed": false,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "preferences": {
+    "defaultView": "list",
+    "avatar": {
+      "type": "emoji",
+      "value": "💭"
+    },
+    "coverImageType": "background"
+  }
+}

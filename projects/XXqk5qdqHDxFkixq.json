@@ -1,0 +1,140 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "69487350-f164-4a85-b946-750ece2fa258",
+        "text": {
+          "ops": [
+            {
+              "insert": "Users/Profiles"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": null,
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "ac30ade8-da07-44bc-8147-23c151461d8a",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Badges"
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": null,
+            "collapsed": false,
+            "completed": false,
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "e6b16c4c-786e-431d-819b-f367bf4d3ca1",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Verify Completed sale or purchase"
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": null,
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "cfddcaf5-9de7-4274-8e6e-bb0c20f682a5",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": null,
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "e97f867f-88a9-4e4b-9ddb-0ece163da48e",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Grant Verified Badge to {{UserName}}"
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": null,
+            "collapsed": false,
+            "completed": false,
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "a74862c5-8d17-4172-bcaf-80eb1e66fe61",
+            "text": {
+              "ops": [
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "preferences": {
+    "defaultView": "table",
+    "avatar": {
+      "type": "emoji",
+      "value": "📈"
+    },
+    "coverImageType": "background"
+  }
+}

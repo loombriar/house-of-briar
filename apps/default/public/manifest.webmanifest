@@ -1,0 +1,25 @@
+{
+  "name": "House of Briar",
+  "short_name": "Briar",
+  "description": "Discover independent designers, slow-made pieces, and one-of-a-kind finds.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#101912",
+  "theme_color": "#c9ae72",
+  "icons": [
+    {
+      "src": "https://files.taskade.com/space-files/dcdb0306-5408-4b6e-9f03-5548f7a3e865/original/house-of-briar-crest.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://files.taskade.com/space-files/dcdb0306-5408-4b6e-9f03-5548f7a3e865/original/house-of-briar-crest.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

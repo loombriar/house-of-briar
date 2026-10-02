@@ -1,0 +1,29 @@
+{
+  "version": "2",
+  "flowTitle": "Log Every Stripe Sale in This Project",
+  "trigger": {
+    "valid": false,
+    "displayName": "Checkout Completed",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-piece-stripe",
+      "pieceVersion": "BLANK",
+      "triggerName": "checkout_session_completed",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "a998d2a3-cf1f-4c55-9629-6f418725eea6",
+      "valid": false,
+      "displayName": "Add the Sale to This Project",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.create",
+        "input": {}
+      }
+    }
+  ]
+}
