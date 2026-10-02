@@ -188,7 +188,7 @@ function createApp(options = {}) {
       sizeBytes: image.size_bytes,
       width: image.width,
       height: image.height,
-      url: mode === 'public' ? `/media/${encodeURIComponent(image.id)}` : `/api/listings/${encodeURIComponent(listingId)}/images/${encodeURIComponent(image.id)}/content`,
+      url: mode === 'private' ? `/api/listings/${encodeURIComponent(listingId)}/images/${encodeURIComponent(image.id)}/content` : `/media/${encodeURIComponent(image.id)}`,
       legacy: false,
     }));
   }
@@ -197,22 +197,27 @@ function createApp(options = {}) {
     if (!row) return null;
     const images = getImages(row.id, mode);
     const primaryImage = images[0] || (row.legacy_image_url ? { url: row.legacy_image_url, legacy: true, id: `legacy-${row.id}` } : null);
-    return {
+    const listing = {
       id: row.id,
       title: row.title,
       description: row.description,
       price: Number(row.price),
       category: row.category,
-      designerId: row.designer_id,
-      status: row.status,
-      moderationStatus: row.moderation_status,
-      createdAt: row.created_at,
-      updatedAt: row.updated_at,
-      publishedAt: row.published_at,
       imageUrl: primaryImage?.url || null,
       primaryImage,
       images
     };
+    if (mode !== 'public') {
+      Object.assign(listing, {
+        designerId: row.designer_id,
+        status: row.status,
+        moderationStatus: row.moderation_status,
+        createdAt: row.created_at,
+        updatedAt: row.updated_at,
+        publishedAt: row.published_at,
+      });
+    }
+    return listing;
   }
 
   function ownedEditableListing(req, res) {
@@ -504,7 +509,7 @@ function createApp(options = {}) {
       WHERE id = ?
     `).run(timestamp, timestamp, row.id);
 
-    return res.json({ item: serializeListing(getListing(row.id), 'public') });
+    return res.json({ item: serializeListing(getListing(row.id), 'admin') });
   });
 
   app.post('/api/admin/listings/:listingId/reject', authAdmin, (req, res) => {

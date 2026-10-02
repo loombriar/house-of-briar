@@ -15,17 +15,20 @@ npm start
 Then open http://localhost:3000.
 
 ## Designer flow
-
 1. Open the Designer portal.
 2. Sign in with a token from `.env`.
 3. Add a listing and upload multiple images at once.
 4. Save as a draft or submit.
 5. If review is enabled, the listing stays hidden until admin approval.
 
+## Customer browsing (no account required)
+
+The storefront, public gallery, product details, and published product images are available to guests without a login. The public gallery includes only listings that are both published and approved. Designer tools and private listing APIs remain separate and require a valid designer token; guests cannot view drafts or pending listings.
+
 ## API summary
 
 - `POST /api/session` — validate a designer token
-- `GET /api/gallery` — public listings only
+- `GET /api/gallery` — guest-accessible published and approved listings only; omits internal designer and moderation metadata
 - `GET /api/my/listings` — authenticated designer listings
 - `POST /api/listings` — create a draft with an idempotency key
 - `PUT /api/listings/:id` — edit a draft/rejected listing
