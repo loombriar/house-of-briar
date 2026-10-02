@@ -82,6 +82,8 @@ test('serves the storefront HTML, stylesheet, and current frontend script from t
   assert.match(html, /^<!doctype html>/i);
   assert.match(html, /href="\/styles\.css"/);
   assert.match(html, /src="\/script\.js"/);
+  assert.match(html, /view product details without an account/);
+  assert.match(html, /Designer portal/);
 
   const cssResponse = await fetch(`${baseUrl}/styles.css`);
   const css = await cssResponse.text();
@@ -186,6 +188,11 @@ test('supports multiple uploads, ordering, owner isolation, review gating, and p
   assert.equal(publishedGallery.body.items.length, 1);
   assert.equal(publishedGallery.body.items[0].title, 'Test woven throw');
   assert.deepEqual(publishedGallery.body.items[0].images.map((image) => image.id), reorderedIds);
+  for (const field of ['designerId', 'status', 'moderationStatus', 'createdAt', 'updatedAt', 'publishedAt']) {
+    assert.equal(Object.hasOwn(publishedGallery.body.items[0], field), false, `public gallery must not expose ${field}`);
+  }
+  assert.equal(Object.hasOwn(publishedGallery.body.items[0], 'price'), true);
+  assert.equal(Object.hasOwn(publishedGallery.body.items[0], 'description'), true);
 
   const publicImage = await fetch(`${baseUrl}/media/${encodeURIComponent(reorderedIds[0])}`);
   assert.equal(publicImage.status, 200);

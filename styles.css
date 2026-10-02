@@ -204,6 +204,7 @@ h2 { font-size: clamp(2rem, 3vw, 3rem); }
   color: white;
   border-color: var(--text-dark);
 }
+.guest-access-note { max-width: 34rem; margin: 0.75rem 0 0; color: var(--text-muted); font-size: 0.88rem; }
 .notice { min-height: 1.5rem; margin: 0 0 1.2rem; }
 .notice[data-kind='error'] { color: #8c352d; }
 .notice[data-kind='success'] { color: #2f6847; }
