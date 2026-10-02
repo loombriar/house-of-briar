@@ -82,6 +82,8 @@ test('serves the storefront HTML, stylesheet, and current frontend script from t
   assert.match(html, /^<!doctype html>/i);
   assert.match(html, /href="\/styles\.css"/);
   assert.match(html, /src="\/script\.js"/);
+  assert.match(html, /view product details without an account/);
+  assert.match(html, /Designer portal/);
 
   const cssResponse = await fetch(`${baseUrl}/styles.css`);
   const css = await cssResponse.text();
