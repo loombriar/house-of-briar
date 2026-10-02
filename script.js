@@ -26,6 +26,19 @@ const productDetailTitle = byId('product-detail-title');
 const productDetailContent = byId('product-detail-content');
 const productIdInput = byId('product-id');
 const listingFormTitle = byId('listing-form-title');
+const searchInput = byId('product-search');
+const sortSelect = byId('product-sort');
+const cartOpenButton = byId('cart-open-btn');
+const cartCount = byId('cart-count');
+const cartDialog = byId('cart-dialog');
+const cartItemsContainer = byId('cart-items');
+const cartSubtotal = byId('cart-subtotal');
+const cartPolicySummary = byId('cart-policy-summary');
+const checkoutButton = byId('checkout-button');
+const checkoutStatus = byId('checkout-status');
+const reportDialog = byId('report-dialog');
+const reportForm = byId('report-form');
+const reportStatus = byId('report-status');
 
 let designerToken = sessionStorage.getItem('briarDesignerToken') || '';
 let currentListingId = '';
@@ -33,6 +46,11 @@ let currentIdempotencyKey = '';
 let galleryItems = [];
 let selectedImages = [];
 let activeFilter = 'all';
+let searchTerm = '';
+let sortOrder = 'featured';
+let guestCart = readGuestCart();
+let storeConfig = null;
+let checkoutIdempotencyKey = '';
 const designerListImageUrls = new Set();
 
 function setMessage(element, message = '', kind = '') {
@@ -57,11 +75,53 @@ function categoryLabel(category) {
   }[category] || 'Other';
 }
 
+function availabilityLabel(product) {
+  if (product.availability === 'in_stock') {
+    if (product.stockQuantity === 0) return 'Out of stock';
+    return Number.isInteger(product.stockQuantity) ? `${product.stockQuantity} available` : 'In stock';
+  }
+  if (product.availability === 'made_to_order') return 'Made to order';
+  if (product.availability === 'out_of_stock') return 'Out of stock';
+  return 'Availability not configured';
+}
+
+function canAddToCart(product) {
+  if (product.availability === 'made_to_order') return true;
+  return product.availability === 'in_stock' && Number.isInteger(product.stockQuantity) && product.stockQuantity > 0;
+}
+
 function makeElement(tag, className = '', text = '') {
   const el = document.createElement(tag);
   if (className) el.className = className;
   if (text) el.textContent = text;
   return el;
+}
+
+function formatMoney(amount) {
+  const currency = storeConfig?.currency || 'usd';
+  try {
+    return new Intl.NumberFormat(undefined, { style: 'currency', currency: currency.toUpperCase() }).format(Number(amount || 0));
+  } catch {
+    return `$${Number(amount || 0).toFixed(2)}`;
+  }
+}
+
+function formatCents(cents) {
+  return formatMoney(Number(cents || 0) / 100);
+}
+
+function readGuestCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('houseOfBriar.guestCart.v1') || '[]');
+    if (!Array.isArray(saved)) return [];
+    return saved.filter((entry) => typeof entry?.id === 'string' && Number.isInteger(entry.quantity) && entry.quantity > 0 && entry.quantity <= 99);
+  } catch {
+    return [];
+  }
+}
+
+function saveGuestCart() {
+  try { localStorage.setItem('houseOfBriar.guestCart.v1', JSON.stringify(guestCart)); } catch {}
 }
 
 function authorizationHeaders(extra = {}) {
@@ -111,13 +171,209 @@ function getProductImages(product) {
   return [];
 }
 
+function persistCart() {
+  guestCart = guestCart.filter((entry) => typeof entry.id === 'string' && Number.isInteger(entry.quantity) && entry.quantity > 0 && entry.quantity <= 99);
+  checkoutIdempotencyKey = '';
+  saveGuestCart();
+  renderCart();
+}
+
+function removeFromCart(productId) {
+  guestCart = guestCart.filter((entry) => entry.id !== productId);
+  persistCart();
+}
+
+function changeCartQuantity(productId, delta) {
+  const entry = guestCart.find((item) => item.id === productId);
+  if (!entry) return;
+  const product = galleryItems.find((item) => item.id === productId);
+  let next = entry.quantity + delta;
+  if (next < 1) return removeFromCart(productId);
+  if (next > 99) next = 99;
+  if (product?.availability === 'in_stock' && Number.isInteger(product.stockQuantity)) {
+    next = Math.min(next, product.stockQuantity);
+  }
+  entry.quantity = next;
+  persistCart();
+}
+
+function addToCart(product) {
+  if (!canAddToCart(product)) {
+    setMessage(checkoutStatus, 'This item cannot be added until its availability is confirmed.', 'error');
+    return;
+  }
+  const entry = guestCart.find((item) => item.id === product.id);
+  const current = entry?.quantity || 0;
+  if (product.availability === 'in_stock' && current >= product.stockQuantity) {
+    setMessage(checkoutStatus, 'The available quantity for this item is already in your bag.', 'error');
+    return;
+  }
+  if (entry) entry.quantity += 1;
+  else guestCart.push({ id: product.id, quantity: 1 });
+  persistCart();
+  setMessage(checkoutStatus, `${product.title} added to your bag.`, 'success');
+}
+
+function renderCart() {
+  if (!cartItemsContainer) return;
+  const itemCount = guestCart.reduce((sum, entry) => sum + entry.quantity, 0);
+  if (cartCount) cartCount.textContent = String(itemCount);
+  if (cartOpenButton) cartOpenButton.setAttribute('aria-label', `Shopping bag, ${itemCount} ${itemCount === 1 ? 'item' : 'items'}`);
+  cartItemsContainer.replaceChildren();
+
+  let subtotalCents = 0;
+  let hasUnavailableItem = false;
+  if (!guestCart.length) {
+    cartItemsContainer.appendChild(makeElement('p', 'cart-empty', 'Your bag is empty. Browse the collection to find something special.'));
+  }
+
+  for (const entry of guestCart) {
+    const product = galleryItems.find((item) => item.id === entry.id);
+    const row = makeElement('div', 'cart-item');
+    const details = makeElement('div');
+    details.appendChild(makeElement('h3', '', product?.title || 'Product no longer available'));
+    if (!product || !canAddToCart(product) || (product.availability === 'in_stock' && entry.quantity > product.stockQuantity)) {
+      hasUnavailableItem = true;
+      const message = !product
+        ? 'This product is no longer in the published collection. Remove it to continue.'
+        : (product.availability === 'in_stock' && entry.quantity > product.stockQuantity)
+          ? `Only ${product.stockQuantity} available. Reduce the quantity to continue.`
+          : availabilityLabel(product);
+      details.appendChild(makeElement('p', 'cart-item-meta', message));
+    } else {
+      subtotalCents += Math.round(Number(product.price || 0) * 100) * entry.quantity;
+      details.appendChild(makeElement('p', 'cart-item-meta', `${availabilityLabel(product)} · ${formatMoney(product.price)} each`));
+      if (product.availabilityNote) details.appendChild(makeElement('p', 'cart-item-meta', product.availabilityNote));
+    }
+
+    const actions = makeElement('div', 'cart-item-actions');
+    const decrease = makeElement('button', '', '−');
+    decrease.type = 'button';
+    decrease.setAttribute('aria-label', `Decrease ${product?.title || 'product'} quantity`);
+    decrease.addEventListener('click', () => changeCartQuantity(entry.id, -1));
+    const quantity = makeElement('span', '', String(entry.quantity));
+    const increase = makeElement('button', '', '+');
+    increase.type = 'button';
+    increase.setAttribute('aria-label', `Increase ${product?.title || 'product'} quantity`);
+    increase.disabled = !product || !canAddToCart(product) || entry.quantity >= 99 || (product.availability === 'in_stock' && entry.quantity >= product.stockQuantity);
+    increase.addEventListener('click', () => changeCartQuantity(entry.id, 1));
+    const remove = makeElement('button', 'remove-cart-item', 'Remove');
+    remove.type = 'button';
+    remove.addEventListener('click', () => removeFromCart(entry.id));
+    actions.append(decrease, quantity, increase, remove);
+    row.append(details, actions);
+    cartItemsContainer.appendChild(row);
+  }
+
+  if (cartSubtotal) cartSubtotal.textContent = formatCents(subtotalCents);
+  const checkoutReady = Boolean(storeConfig?.checkoutEnabled && itemCount > 0 && !hasUnavailableItem);
+  if (checkoutButton) {
+    checkoutButton.disabled = !checkoutReady;
+    checkoutButton.textContent = storeConfig?.checkoutEnabled ? 'Continue to secure Stripe checkout (test mode)' : 'Checkout not yet available';
+  }
+  if (checkoutStatus) {
+    const message = hasUnavailableItem
+      ? 'Remove unavailable items or adjust quantities before checkout.'
+      : storeConfig?.checkoutEnabled
+        ? 'Stripe test mode is enabled. Test payments are simulated and no live charge will be made.'
+        : 'Checkout is disabled until the store policies and Stripe test webhook settings are configured.';
+    setMessage(checkoutStatus, message, hasUnavailableItem ? 'error' : '');
+  }
+}
+
+function renderStorePolicy() {
+  if (!cartPolicySummary) return;
+  cartPolicySummary.replaceChildren();
+  if (storeConfig?.shipping) {
+    const shipping = storeConfig.shipping;
+    cartPolicySummary.appendChild(makeElement('p', '', `${shipping.displayName}: ${formatCents(shipping.amountCents)} per order. Estimated ${shipping.minimumBusinessDays}–${shipping.maximumBusinessDays} business days. Ships to ${shipping.countries.join(', ')}.`));
+  } else {
+    cartPolicySummary.appendChild(makeElement('p', '', 'Shipping price, delivery estimate, and destinations have not been configured yet.'));
+  }
+  if (storeConfig?.returnsPolicy) cartPolicySummary.appendChild(makeElement('p', '', `Returns: ${storeConfig.returnsPolicy}`));
+  else cartPolicySummary.appendChild(makeElement('p', '', 'Returns and refund terms have not been configured yet.'));
+  const support = storeConfig?.support || {};
+  const contacts = [support.email, support.phone].filter(Boolean);
+  cartPolicySummary.appendChild(makeElement('p', '', contacts.length ? `Questions? Contact ${contacts.join(' · ')}.` : 'Customer support contact details have not been configured yet.'));
+  if (storeConfig?.checkoutEnabled) cartPolicySummary.appendChild(makeElement('p', 'small-print', 'Payment will be processed through Stripe test mode only.'));
+}
+
+async function loadStoreConfig() {
+  try {
+    storeConfig = await apiRequest('/api/store-config');
+  } catch {
+    storeConfig = null;
+  }
+  renderStorePolicy();
+  renderCart();
+}
+
+async function startCheckout() {
+  if (!checkoutButton || checkoutButton.disabled || !storeConfig?.checkoutEnabled) return;
+  checkoutIdempotencyKey ||= crypto.randomUUID();
+  checkoutButton.disabled = true;
+  setMessage(checkoutStatus, 'Starting secure Stripe test checkout…', '');
+  try {
+    const payload = await apiRequest('/api/checkout/session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ idempotencyKey: checkoutIdempotencyKey, items: guestCart.map((entry) => ({ id: entry.id, quantity: entry.quantity })) })
+    });
+    const checkoutUrl = new URL(payload.url);
+    if (checkoutUrl.protocol !== 'https:' || checkoutUrl.hostname !== 'checkout.stripe.com') throw new Error('Stripe returned an unexpected checkout URL.');
+    window.location.assign(checkoutUrl.toString());
+  } catch (error) {
+    if (['checkout_closed', 'checkout_expired', 'idempotency_conflict'].includes(error.code)) checkoutIdempotencyKey = '';
+    setMessage(checkoutStatus, error.message, 'error');
+    checkoutButton.disabled = false;
+  }
+}
+
+async function handleCheckoutReturn() {
+  const pageUrl = new URL(window.location.href);
+  const returnState = pageUrl.searchParams.get('checkout');
+  if (!returnState) return;
+  if (returnState === 'cancelled') {
+    setMessage(shopStatus, 'Checkout was canceled. Your guest shopping bag is still saved.', '');
+  } else if (returnState === 'success') {
+    const sessionId = pageUrl.searchParams.get('session_id') || '';
+    setMessage(shopStatus, 'Checking the test payment with the store…', '');
+    try {
+      const status = await apiRequest(`/api/checkout/session-status/${encodeURIComponent(sessionId)}`, { headers: { 'Cache-Control': 'no-store' } });
+      if (status.status === 'paid') {
+        guestCart = [];
+        checkoutIdempotencyKey = '';
+        saveGuestCart();
+        renderCart();
+        setMessage(shopStatus, 'Your test payment was confirmed and the store received your order.', 'success');
+      } else if (status.status === 'expired' || status.status === 'failed') {
+        setMessage(shopStatus, 'The checkout did not complete. Your bag remains saved so you can try again.', 'error');
+      } else {
+        setMessage(shopStatus, 'Payment is awaiting Stripe confirmation. Your bag remains saved until the store confirms it.', '');
+      }
+    } catch (error) {
+      setMessage(shopStatus, `Unable to verify the checkout yet: ${error.message}. Your bag remains saved.`, 'error');
+    }
+  }
+  pageUrl.searchParams.delete('checkout');
+  pageUrl.searchParams.delete('session_id');
+  window.history.replaceState({}, '', `${pageUrl.pathname}${pageUrl.search}${pageUrl.hash}`);
+}
+
 function renderGallery() {
   if (!productGrid) return;
   productGrid.replaceChildren();
 
-  const items = galleryItems.filter((item) => activeFilter === 'all' || item.category === activeFilter);
+  const query = searchTerm.trim().toLowerCase();
+  const items = galleryItems
+    .filter((item) => (activeFilter === 'all' || item.category === activeFilter)
+      && (!query || `${item.title} ${item.description || ''} ${categoryLabel(item.category)}`.toLowerCase().includes(query)))
+    .slice();
+  if (sortOrder === 'price-asc') items.sort((a, b) => Number(a.price) - Number(b.price));
+  if (sortOrder === 'price-desc') items.sort((a, b) => Number(b.price) - Number(a.price));
+  if (sortOrder === 'name-asc') items.sort((a, b) => a.title.localeCompare(b.title));
   if (!items.length) {
-    const empty = makeElement('p', 'empty-gallery', 'No published pieces are available in this category yet.');
+    const empty = makeElement('p', 'empty-gallery', query ? 'No pieces match your search and filters.' : 'No published pieces are available in this category yet.');
     productGrid.appendChild(empty);
     return;
   }
@@ -148,10 +404,13 @@ function renderGallery() {
     const body = makeElement('span', 'product-body');
     const meta = makeElement('span', 'meta-row');
     meta.appendChild(makeElement('span', 'badge', categoryLabel(item.category)));
-    meta.appendChild(makeElement('span', 'price', `$${Number(item.price || 0).toFixed(2)}`));
+    meta.appendChild(makeElement('span', 'price', formatMoney(item.price)));
     body.appendChild(meta);
     body.appendChild(makeElement('span', 'card-title', item.title));
     body.appendChild(makeElement('span', 'card-description', item.description || 'A one-of-a-kind designation from an independent designer.'));
+    const availability = makeElement('span', 'availability-badge', availabilityLabel(item));
+    availability.dataset.state = item.availability || 'unknown';
+    body.appendChild(availability);
     card.append(imageWrap, body);
     productGrid.appendChild(card);
   }
@@ -162,6 +421,7 @@ async function loadGallery() {
     const payload = await apiRequest('/api/gallery');
     galleryItems = Array.isArray(payload.items) ? payload.items : [];
     renderGallery();
+    renderCart();
     if (shopStatus) {
       setMessage(shopStatus, `${galleryItems.length} published ${galleryItems.length === 1 ? 'piece' : 'pieces'} in the gallery.`, 'success');
     }
@@ -188,12 +448,58 @@ function openProductDetails(item) {
   const copy = makeElement('div', 'product-detail-copy');
   copy.appendChild(makeElement('span', 'badge', categoryLabel(item.category)));
   copy.appendChild(makeElement('h3', '', item.title));
-  copy.appendChild(makeElement('strong', 'price', `$${Number(item.price || 0).toFixed(2)}`));
+  copy.appendChild(makeElement('strong', 'price', formatMoney(item.price)));
   copy.appendChild(makeElement('p', '', item.description || 'A carefully made piece from an independent designer.'));
+  const availability = makeElement('span', 'availability-badge', availabilityLabel(item));
+  availability.dataset.state = item.availability || 'unknown';
+  copy.appendChild(availability);
+  if (item.availabilityNote) copy.appendChild(makeElement('p', 'availability-note', item.availabilityNote));
   if (images.length > 1) copy.appendChild(makeElement('p', 'small-print', `${images.length} photos · first image is the cover`));
+
+  const actions = makeElement('div', 'product-action-row');
+  const addButton = makeElement('button', 'primary-button', canAddToCart(item) ? 'Add to bag' : 'Unavailable for purchase');
+  addButton.type = 'button';
+  addButton.disabled = !canAddToCart(item);
+  addButton.addEventListener('click', () => addToCart(item));
+  const reportButton = makeElement('button', 'secondary-button', 'Report an issue');
+  reportButton.type = 'button';
+  reportButton.addEventListener('click', () => openReportDialog(item));
+  actions.append(addButton, reportButton);
+  copy.appendChild(actions);
 
   productDetailContent.append(imageGrid, copy);
   productDialog.showModal();
+}
+
+function openReportDialog(product) {
+  if (!reportDialog || !reportForm) return;
+  byId('report-listing-id').value = product.id;
+  byId('report-message').value = '';
+  byId('report-website').value = '';
+  setMessage(reportStatus, '', '');
+  if (!reportDialog.open) reportDialog.showModal();
+}
+
+async function submitReport(event) {
+  event.preventDefault();
+  const payload = {
+    listingId: byId('report-listing-id').value,
+    category: byId('report-category').value,
+    message: byId('report-message').value.trim(),
+    website: byId('report-website').value.trim()
+  };
+  setMessage(reportStatus, 'Sending report…', '');
+  try {
+    await apiRequest('/api/reports', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    reportForm.reset();
+    setMessage(reportStatus, 'Thank you. Your report was received for review.', 'success');
+  } catch (error) {
+    setMessage(reportStatus, error.message, 'error');
+  }
 }
 
 function resetListingForm() {
@@ -302,15 +608,25 @@ function readFormValues() {
     title: byId('product-name').value.trim(),
     description: byId('product-description').value.trim(),
     price: byId('product-price').value,
-    category: byId('product-category').value
+    category: byId('product-category').value,
+    availability: byId('product-availability').value,
+    stockQuantity: byId('product-stock-quantity').value,
+    availabilityNote: byId('product-availability-note').value.trim()
   };
 }
 
-function validateListingValues(values) {
+function validateListingValues(values, requirePublishReady = false) {
   if (!values.title || values.title.length > 120) return 'Add a design name (1–120 characters).';
   if (values.description.length > 2000) return 'Description must be 2,000 characters or fewer.';
-  if (!Number.isFinite(Number(values.price)) || Number(values.price) < 0) return 'Provide a valid price.';
-  if (selectedImages.length < 1) return 'At least one photo is required.';
+  if (!Number.isFinite(Number(values.price)) || Number(values.price) < 0 || Math.abs(Number(values.price) * 100 - Math.round(Number(values.price) * 100)) > 0.000001) return 'Provide a valid price in increments of 0.01.';
+  if (values.availability === 'in_stock' && (!Number.isInteger(Number(values.stockQuantity)) || Number(values.stockQuantity) < 1)) return 'Set an available quantity of at least 1 for an in-stock item.';
+  if (values.availability === 'made_to_order' && !values.availabilityNote) return 'Add an estimated production or shipping time for made-to-order items.';
+  if (requirePublishReady) {
+    if (Number(values.price) <= 0) return 'Set a price greater than zero before publication.';
+    if (values.description.trim().length < 20) return 'Add a complete product description (at least 20 characters).';
+    if (values.availability === 'unknown') return 'Set product availability before publication.';
+    if (selectedImages.length < 1) return 'At least one photo is required before publication.';
+  }
   return '';
 }
 
@@ -378,14 +694,14 @@ async function handleSave(event) {
     return;
   }
 
+  const action = event.submitter?.value || 'draft';
   const values = readFormValues();
-  const validationError = validateListingValues(values);
+  const validationError = validateListingValues(values, action === 'submit');
   if (validationError) {
     setMessage(uploadMessage, validationError, 'error');
     return;
   }
 
-  const action = event.submitter?.value || 'draft';
   setMessage(uploadMessage, 'Saving the listing…', 'success');
 
   try {
@@ -426,6 +742,66 @@ async function handleSave(event) {
   }
 }
 
+function makeAvailabilityEditor(listing) {
+  const editor = makeElement('div', 'availability-editor');
+  const select = document.createElement('select');
+  select.setAttribute('aria-label', `Availability for ${listing.title}`);
+  [
+    ['unknown', 'Not configured'],
+    ['in_stock', 'In stock'],
+    ['made_to_order', 'Made to order'],
+    ['out_of_stock', 'Out of stock']
+  ].forEach(([value, label]) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    select.appendChild(option);
+  });
+  select.value = listing.availability || 'unknown';
+
+  const stock = document.createElement('input');
+  stock.type = 'number';
+  stock.min = '1';
+  stock.step = '1';
+  stock.value = Number.isInteger(listing.stockQuantity) ? String(listing.stockQuantity) : '';
+  stock.placeholder = 'Qty if in stock';
+  stock.setAttribute('aria-label', `Available quantity for ${listing.title}`);
+
+  const note = document.createElement('input');
+  note.type = 'text';
+  note.maxLength = 300;
+  note.value = listing.availabilityNote || '';
+  note.placeholder = 'Lead time / availability note';
+  note.setAttribute('aria-label', `Availability details for ${listing.title}`);
+
+  const save = makeElement('button', 'secondary-button', 'Update availability');
+  save.type = 'button';
+  const status = makeElement('p', 'form-message');
+  save.addEventListener('click', async () => {
+    save.disabled = true;
+    setMessage(status, 'Saving availability…', '');
+    try {
+      await apiRequest(`/api/listings/${encodeURIComponent(listing.id)}/availability`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          availability: select.value,
+          stockQuantity: select.value === 'in_stock' ? stock.value : null,
+          availabilityNote: note.value.trim()
+        })
+      });
+      setMessage(status, 'Availability updated.', 'success');
+      await Promise.all([loadGallery(), loadDesignerListings()]);
+    } catch (error) {
+      setMessage(status, error.message, 'error');
+    } finally {
+      save.disabled = false;
+    }
+  });
+  editor.append(select, stock, note, save, status);
+  return editor;
+}
+
 async function loadDesignerListings() {
   if (!designerToken) return;
   try {
@@ -453,7 +829,7 @@ async function loadDesignerListings() {
 
       const info = makeElement('div', 'designer-product-info');
       info.appendChild(makeElement('h4', '', listing.title));
-      info.appendChild(makeElement('p', '', `${images.length} photo${images.length === 1 ? '' : 's'} · ${categoryLabel(listing.category)}`));
+      info.appendChild(makeElement('p', '', `${images.length} photo${images.length === 1 ? '' : 's'} · ${categoryLabel(listing.category)} · ${availabilityLabel(listing)}`));
       row.appendChild(info);
 
       const actions = makeElement('div', 'designer-product-actions');
@@ -467,6 +843,7 @@ async function loadDesignerListings() {
       if (['draft', 'rejected'].includes(listing.status)) actions.appendChild(edit);
       row.appendChild(actions);
       if (designerProductsContainer) designerProductsContainer.appendChild(row);
+      if (designerProductsContainer) designerProductsContainer.appendChild(makeAvailabilityEditor(listing));
     }
   } catch (error) {
     if (error.status === 401) signOut();
@@ -484,6 +861,9 @@ async function editListing(listingId) {
     if (byId('product-description')) byId('product-description').value = listing.description;
     if (byId('product-price')) byId('product-price').value = listing.price;
     if (byId('product-category')) byId('product-category').value = listing.category;
+    if (byId('product-availability')) byId('product-availability').value = listing.availability || 'unknown';
+    if (byId('product-stock-quantity')) byId('product-stock-quantity').value = Number.isInteger(listing.stockQuantity) ? listing.stockQuantity : '';
+    if (byId('product-availability-note')) byId('product-availability-note').value = listing.availabilityNote || '';
     if (listingFormTitle) listingFormTitle.textContent = 'Edit a design';
 
     selectedImages.forEach((image) => {
@@ -567,6 +947,16 @@ if (photoInput) photoInput.addEventListener('change', (event) => addFiles(event.
 byId('signout-btn')?.addEventListener('click', signOut);
 byId('new-listing-btn')?.addEventListener('click', resetListingForm);
 byId('product-dialog-close')?.addEventListener('click', () => productDialog.close());
+cartOpenButton?.addEventListener('click', () => {
+  renderCart();
+  if (cartDialog && !cartDialog.open) cartDialog.showModal();
+});
+byId('cart-dialog-close')?.addEventListener('click', () => cartDialog.close());
+byId('report-dialog-close')?.addEventListener('click', () => reportDialog.close());
+if (reportForm) reportForm.addEventListener('submit', submitReport);
+checkoutButton?.addEventListener('click', startCheckout);
+if (searchInput) searchInput.addEventListener('input', () => { searchTerm = searchInput.value; renderGallery(); });
+if (sortSelect) sortSelect.addEventListener('change', () => { sortOrder = sortSelect.value || 'featured'; renderGallery(); });
 
 document.querySelectorAll('.filter-button').forEach((button) => {
   button.addEventListener('click', () => {
@@ -590,4 +980,5 @@ if (designerToken) {
   signIn(designerToken);
 }
 
-loadGallery();
+renderCart();
+Promise.all([loadStoreConfig(), loadGallery()]).then(handleCheckoutReturn);

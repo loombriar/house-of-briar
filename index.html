@@ -36,7 +36,7 @@
 
           <div class="header-actions">
             <button class="ghost-button" type="button" id="designer-login-btn">Designer portal</button>
-            <button class="primary-button" type="button" aria-label="Shopping bag, 2 items">Cart (2)</button>
+            <button class="primary-button" type="button" id="cart-open-btn" aria-label="Shopping bag, 0 items">Cart (<span id="cart-count">0</span>)</button>
           </div>
         </div>
       </header>
@@ -99,6 +99,17 @@
                 <button class="filter-button" type="button" data-filter="apparel" aria-pressed="false">Apparel</button>
                 <button class="filter-button" type="button" data-filter="accessories" aria-pressed="false">Accessories</button>
               </div>
+            </div>
+            <div class="catalog-controls" aria-label="Search and sort products">
+              <label class="sr-only" for="product-search">Search products</label>
+              <input id="product-search" type="search" placeholder="Search the collection" autocomplete="off" />
+              <label for="product-sort">Sort by</label>
+              <select id="product-sort">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="name-asc">Name: A to Z</option>
+              </select>
             </div>
             <p id="shop-status" class="notice" role="status" aria-live="polite">Loading the latest pieces…</p>
             <div id="product-grid" class="product-grid" aria-label="Shopping gallery"></div>
@@ -180,6 +191,24 @@
           <label for="product-description">Description</label>
           <textarea id="product-description" name="description" maxlength="2000" rows="3"></textarea>
           <div class="form-row">
+            <div>
+              <label for="product-availability">Availability</label>
+              <select id="product-availability" name="availability" required>
+                <option value="unknown">Not configured</option>
+                <option value="in_stock">In stock</option>
+                <option value="made_to_order">Made to order</option>
+                <option value="out_of_stock">Out of stock</option>
+              </select>
+            </div>
+            <div>
+              <label for="product-stock-quantity">Available quantity</label>
+              <input id="product-stock-quantity" name="stockQuantity" type="number" min="1" step="1" />
+              <span class="small-print">Required when marked in stock.</span>
+            </div>
+          </div>
+          <label for="product-availability-note">Availability or lead-time details</label>
+          <input id="product-availability-note" name="availabilityNote" maxlength="300" placeholder="Required for made-to-order items" />
+          <div class="form-row">
             <div><label for="product-price">Price</label><input id="product-price" name="price" type="number" min="0" step="0.01" required /></div>
             <div>
               <label for="product-category">Category</label>
@@ -217,6 +246,46 @@
         <button id="product-dialog-close" class="icon-button" type="button" aria-label="Close product details">×</button>
       </div>
       <div id="product-detail-content" class="product-detail-content"></div>
+    </dialog>
+
+    <dialog id="cart-dialog" class="app-dialog cart-dialog" aria-labelledby="cart-dialog-title">
+      <div class="dialog-header">
+        <div><p class="eyebrow">Your guest shopping bag</p><h2 id="cart-dialog-title">Shopping bag</h2></div>
+        <button id="cart-dialog-close" class="icon-button" type="button" aria-label="Close shopping bag">×</button>
+      </div>
+      <div class="cart-content">
+        <div id="cart-items" class="cart-items" aria-live="polite"></div>
+        <div class="cart-summary"><span>Subtotal</span><strong id="cart-subtotal">$0.00</strong></div>
+        <div id="cart-policy-summary" class="store-policy-summary" aria-live="polite">
+          <p>Shipping, delivery timing, returns, and customer support details will appear here before payment.</p>
+        </div>
+        <button id="checkout-button" class="primary-button" type="button" disabled>Continue to checkout</button>
+        <p id="checkout-status" class="form-message" role="status" aria-live="polite">Checkout is not configured yet; no payment will be taken.</p>
+      </div>
+    </dialog>
+
+    <dialog id="report-dialog" class="app-dialog report-dialog" aria-labelledby="report-dialog-title">
+      <div class="dialog-header">
+        <div><p class="eyebrow">Help us keep the shop accurate</p><h2 id="report-dialog-title">Report a product issue</h2></div>
+        <button id="report-dialog-close" class="icon-button" type="button" aria-label="Close product report">×</button>
+      </div>
+      <form id="report-form" class="stack-form report-form">
+        <input id="report-listing-id" name="listingId" type="hidden" />
+        <label for="report-category">What needs attention?</label>
+        <select id="report-category" name="category" required>
+          <option value="incorrect_details">Product details</option>
+          <option value="image_issue">Photo or image</option>
+          <option value="availability">Availability</option>
+          <option value="other">Something else</option>
+        </select>
+        <label for="report-message">Describe the issue</label>
+        <textarea id="report-message" name="message" minlength="5" maxlength="1000" rows="4" required></textarea>
+        <label class="honeypot-field" aria-hidden="true" for="report-website">Leave this field empty
+          <input id="report-website" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+        <button class="primary-button" type="submit">Send report</button>
+        <p id="report-status" class="form-message" role="status" aria-live="polite"></p>
+      </form>
     </dialog>
   </body>
 </html>
