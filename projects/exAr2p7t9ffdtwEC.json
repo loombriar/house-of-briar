@@ -1,0 +1,1046 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "1126b253-ef79-4968-a9e5-06b41bdfe6d5",
+        "text": {
+          "ops": [
+            {
+              "insert": "ChatGPT Content Marketing (Copy)"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": null,
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "6ff4eeed-1721-4b1c-9609-7b975c33ed4a",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Use this  ChatGPT content marketing template to create, manage, and optimize content for your business. This template offers an all-in-one solution for content marketing efforts, from creating personalized content to analyzing how successful each campaign is so you can get up and running in minutes."
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "text",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "49ae2cc9-dddc-476f-aeea-fe62f7582b19",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "⭐️ Visit https://openai.com/blog/chatgpt/"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "dfb1a87e-1479-406e-ac4a-2e288ed14670",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "💬 Enter one of the prompts into ChatGPT to start a conversation"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "7c85a52d-5d98-48c0-98fa-7372afa4c2f2",
+            "text": {
+              "ops": [
+                {
+                  "insert": "💡 "
+                },
+                {
+                  "insert": "Ideation",
+                  "attributes": {
+                    "highlight": "#fc9f36"
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "c2b97671-0313-444d-bd06-57a443b5b3db",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "How can \""
+                    },
+                    {
+                      "insert": "product/service",
+                      "attributes": {
+                        "highlight": "#fc9f36",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\"",
+                      "attributes": {
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": " benefit \""
+                    },
+                    {
+                      "insert": "customers/target audience",
+                      "attributes": {
+                        "highlight": "#fc9f36",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "045726f2-d94e-44be-9607-2043bcde76e7",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "What makes our \""
+                    },
+                    {
+                      "insert": "product/service A",
+                      "attributes": {
+                        "highlight": "#fc9f36",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": " ",
+                      "attributes": {
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "stand out from \""
+                    },
+                    {
+                      "insert": "product/service B",
+                      "attributes": {
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "80a56873-c573-44ea-b639-43ecb3547d9f",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Ideas to effectively target \""
+                    },
+                    {
+                      "insert": "customers/target audience",
+                      "attributes": {
+                        "highlight": "#fc9f36",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "6eabde58-a557-4e8b-810c-59fd0e85983c",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "What are some ways to increase awareness for a brand in the \""
+                    },
+                    {
+                      "insert": "field/domain",
+                      "attributes": {
+                        "highlight": "#fc9f36",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" space"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "491fdb94-1450-4137-b2ff-26bb5d527b97",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "How can I use \""
+                    },
+                    {
+                      "insert": "medium/social media platform",
+                      "attributes": {
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" to promote \""
+                    },
+                    {
+                      "insert": "product description",
+                      "attributes": {
+                        "highlight": "#fc9f36",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "4dd17dc3-8b33-42da-aed3-3f84cb22e587",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "08071659-7c57-4263-8fab-49dcd9ee577e",
+            "text": {
+              "ops": [
+                {
+                  "insert": "🔎 "
+                },
+                {
+                  "insert": "SEO Research",
+                  "attributes": {
+                    "highlight": "#ffd333"
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "3eab7a68-bad0-4eec-8836-1e3744836e52",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "What are the official languages in \""
+                    },
+                    {
+                      "insert": "country/region",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "square",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "69376248-0d3e-42c9-98a0-2bc0476adf80",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "List top \""
+                    },
+                    {
+                      "insert": "x",
+                      "attributes": {
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" keywords in \""
+                    },
+                    {
+                      "insert": "domain/fiel",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "d",
+                      "attributes": {
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" industry and add them to a table that specifies the search volume for each keyword for \""
+                    },
+                    {
+                      "insert": "country/region",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "square",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "a1697d30-0b7b-4081-905c-5d816ad6fb55",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "List all possible synonyms for the following keywords: \""
+                    },
+                    {
+                      "insert": "list of keywords",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "square",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "746811e7-c8d8-45bb-bc19-7499fe46e1e1",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Write \""
+                    },
+                    {
+                      "insert": "x",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" headlines used on \""
+                    },
+                    {
+                      "insert": "site URL",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "square",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "73814aeb-0731-434e-bc19-e86f0169b48d",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Write \""
+                    },
+                    {
+                      "insert": "x",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" headline variations for \""
+                    },
+                    {
+                      "insert": "medium/social media platform",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" on the topic of \""
+                    },
+                    {
+                      "insert": "topic",
+                      "attributes": {
+                        "highlight": "#ffd333",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "square",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "b141022c-628e-4e81-b8b2-d90a177e1d0f",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "square",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "ecb1149b-08e9-4aba-a4fb-a4370039b5d6",
+            "text": {
+              "ops": [
+                {
+                  "insert": "📄 "
+                },
+                {
+                  "insert": "Writing",
+                  "attributes": {
+                    "highlight": "#3fb0f3"
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "759dc644-a712-4f6f-b55f-2b6768feeda2",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Correct grammar and spelling in the following text: \""
+                    },
+                    {
+                      "insert": "paste your text",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "triangle",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "d3a46bb3-5652-42cf-afa2-abce1dd0da8f",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Conduct a sentiment analysis of the following text: \""
+                    },
+                    {
+                      "insert": "paste your text",
+                      "attributes": {
+                        "bold": true,
+                        "highlight": "#3fb0f3"
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "triangle",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "f574e6c8-de9a-489f-a843-bf3d44f711c9",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Write \""
+                    },
+                    {
+                      "insert": "x",
+                      "attributes": {
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" persuasive headlines for \""
+                    },
+                    {
+                      "insert": "campaign description",
+                      "attributes": {
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" with these keywords: \""
+                    },
+                    {
+                      "insert": "keyword",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": " ",
+                      "attributes": {
+                        "highlight": "#3fb0f3"
+                      }
+                    },
+                    {
+                      "insert": "1",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\", \""
+                    },
+                    {
+                      "insert": "keyword",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": " ",
+                      "attributes": {
+                        "highlight": "#3fb0f3"
+                      }
+                    },
+                    {
+                      "insert": "2",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "triangle",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "e52f2615-f1d2-4565-96f2-fce03f84402d",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Generate a \""
+                    },
+                    {
+                      "insert": "medium/social media platform",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" marketing campaign strategy to promote \""
+                    },
+                    {
+                      "insert": "product description",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "triangle",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "1a8cf73e-eac4-40a2-9568-a81ae1badf1a",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Write \""
+                    },
+                    {
+                      "insert": "x",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" alternatives to the following headline: \""
+                    },
+                    {
+                      "insert": "paste your headline",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\""
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "triangle",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "c47781db-6030-44da-8539-bcdae0187a34",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": " Rewrite the following paragraph in \""
+                    },
+                    {
+                      "insert": "tone of voice",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\" tone: \""
+                    },
+                    {
+                      "insert": "paste your text",
+                      "attributes": {
+                        "bold": true,
+                        "highlight": "#3fb0f3"
+                      }
+                    },
+                    {
+                      "insert": "\"",
+                      "attributes": {
+                        "highlight": "#3fb0f3"
+                      }
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "triangle",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "b050d9d7-15f5-49bb-a2ea-986af3dbf155",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Create an outline for an article about: \""
+                    },
+                    {
+                      "insert": "topic",
+                      "attributes": {
+                        "highlight": "#3fb0f3",
+                        "bold": true
+                      }
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "triangle",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "d0d86b05-38b8-4fae-af22-fda375823ed2",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "triangle",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "6f1ff6d0-232c-4c8c-999c-eb22e3ebb319",
+            "text": {
+              "ops": [
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "preferences": {
+    "avatar": {
+      "type": "emoji",
+      "value": "🤩"
+    },
+    "coverImageType": "banner"
+  }
+}

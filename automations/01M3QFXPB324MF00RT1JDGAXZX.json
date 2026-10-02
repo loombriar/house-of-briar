@@ -1,0 +1,285 @@
+{
+  "version": "2",
+  "flowTitle": "Private Studio Image Upload",
+  "trigger": {
+    "type": "FORM",
+    "displayName": "Private studio image upload",
+    "settings": {
+      "description": "",
+      "inputs": [
+        {
+          "id": "nodeId",
+          "title": "Input for nodeId",
+          "description": "",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "name",
+          "title": "Input for name",
+          "description": "",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "price",
+          "title": "Input for price",
+          "description": "",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "id": "description",
+          "title": "Input for description",
+          "description": "",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "designer",
+          "title": "Input for designer",
+          "description": "",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "designerEmail",
+          "title": "Input for designerEmail",
+          "description": "",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "ownerId",
+          "title": "Input for ownerId",
+          "description": "",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "category",
+          "title": "Input for category",
+          "description": "",
+          "required": true,
+          "type": "static_dropdown",
+          "options": [
+            {
+              "id": "one-of-a-kind",
+              "type": "text",
+              "value": "one-of-a-kind"
+            },
+            {
+              "id": "upcycled",
+              "type": "text",
+              "value": "upcycled"
+            },
+            {
+              "id": "vintage-inspired",
+              "type": "text",
+              "value": "vintage-inspired"
+            },
+            {
+              "id": "handmade",
+              "type": "text",
+              "value": "handmade"
+            },
+            {
+              "id": "botanical",
+              "type": "text",
+              "value": "botanical"
+            },
+            {
+              "id": "limited-edition",
+              "type": "text",
+              "value": "limited-edition"
+            },
+            {
+              "id": "statement-piece",
+              "type": "text",
+              "value": "statement-piece"
+            }
+          ]
+        },
+        {
+          "id": "size",
+          "title": "Input for size",
+          "description": "",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "tags",
+          "title": "Input for tags",
+          "description": "",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "status",
+          "title": "Input for status",
+          "description": "",
+          "required": true,
+          "type": "static_dropdown",
+          "options": [
+            {
+              "id": "draft",
+              "type": "text",
+              "value": "draft"
+            },
+            {
+              "id": "available",
+              "type": "text",
+              "value": "available"
+            },
+            {
+              "id": "sold",
+              "type": "text",
+              "value": "sold"
+            }
+          ]
+        },
+        {
+          "id": "coverImage",
+          "title": "Cover image",
+          "description": "Upload the listing cover image.",
+          "required": true,
+          "type": "file"
+        },
+        {
+          "id": "galleryImage1",
+          "title": "Gallery image",
+          "description": "Optional additional listing image.",
+          "required": false,
+          "type": "file"
+        }
+      ],
+      "isEndPageEnabled": false
+    }
+  },
+  "actions": [
+    {
+      "name": "1aa991e5-41ed-4360-8018-25e01df50f13",
+      "valid": false,
+      "displayName": "Save hosted listing images",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "1.0.0",
+        "actionName": "updateCustomFields",
+        "input": {
+          "fields": {
+            "@ownr1": {
+              "data": {
+                "value": "{{ trigger[\"ownerId\"] }}"
+              },
+              "rank": "2",
+              "fieldId": "@ownr1"
+            },
+            "@stat1": {
+              "data": {
+                "value": "{{ trigger[\"status\"] }}"
+              },
+              "rank": "10",
+              "fieldId": "@stat1"
+            },
+            "@categ1": {
+              "data": {
+                "value": "{{ trigger[\"category\"] }}"
+              },
+              "rank": "8",
+              "fieldId": "@categ1"
+            },
+            "@descr1": {
+              "data": {
+                "value": "{{ trigger[\"description\"] }}"
+              },
+              "rank": "4",
+              "fieldId": "@descr1"
+            },
+            "@desig1": {
+              "data": {
+                "value": "{{ trigger[\"designer\"] }}"
+              },
+              "rank": "0",
+              "fieldId": "@desig1"
+            },
+            "@email1": {
+              "data": {
+                "value": "{{ trigger[\"designerEmail\"] }}"
+              },
+              "rank": "6",
+              "fieldId": "@email1"
+            },
+            "@gally1": {
+              "data": {
+                "value": "{{ trigger[\"galleryImage1\"] }}"
+              },
+              "rank": "5",
+              "fieldId": "@gally1"
+            },
+            "@image1": {
+              "data": {
+                "value": "{{ trigger[\"coverImage\"] }}"
+              },
+              "rank": "7",
+              "fieldId": "@image1"
+            },
+            "@price1": {
+              "data": {
+                "value": "{{ trigger[\"price\"] }}"
+              },
+              "rank": "3",
+              "fieldId": "@price1"
+            },
+            "@size01": {
+              "data": {
+                "value": "{{ trigger[\"size\"] }}"
+              },
+              "rank": "1",
+              "fieldId": "@size01"
+            },
+            "@tags01": {
+              "data": {
+                "value": "{{ trigger[\"tags\"] }}"
+              },
+              "rank": "9",
+              "fieldId": "@tags01"
+            }
+          },
+          "nodeId": "{{ trigger[\"nodeId\"] }}",
+          "projectId": {
+            "type": "flow-template-variable-input-type",
+            "id": "QUQPuN1aFvGorkJ3"
+          }
+        }
+      }
+    },
+    {
+      "name": "c8d5ffb8-c457-49a3-9d38-8d12c2cf67a1",
+      "valid": false,
+      "displayName": "Save garment name",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "1.0.0",
+        "actionName": "task.update",
+        "input": {
+          "nodeId": "{{ trigger[\"nodeId\"] }}",
+          "content": "{{ trigger[\"name\"] }}",
+          "projectId": {
+            "type": "flow-template-variable-input-type",
+            "id": "QUQPuN1aFvGorkJ3"
+          }
+        }
+      }
+    }
+  ],
+  "variables": {
+    "QUQPuN1aFvGorkJ3": {
+      "id": "QUQPuN1aFvGorkJ3",
+      "rank": "V",
+      "type": "string",
+      "format": "taskade-project-id"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "version": "2",
+  "flowTitle": "Monthly Report Generator",
+  "trigger": {
+    "valid": false,
+    "displayName": "On the 1st of Each Month",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-internalpiece-schedule",
+      "pieceVersion": "BLANK",
+      "triggerName": "schedule.daily",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "fcba25d1-2373-4979-9d21-ab08fc2209b7",
+      "valid": false,
+      "displayName": "Have AI Draft the Report",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "BLANK",
+        "actionName": "ai.ask",
+        "input": {}
+      }
+    },
+    {
+      "name": "e79f908a-ccdd-44a3-a50c-606b18514c48",
+      "valid": false,
+      "displayName": "Save It Into a Reports Project",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.create",
+        "input": {}
+      }
+    }
+  ]
+}

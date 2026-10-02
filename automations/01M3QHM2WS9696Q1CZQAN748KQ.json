@@ -1,0 +1,118 @@
+{
+  "version": "2",
+  "flowTitle": "Product Inquiry Capture",
+  "trigger": {
+    "type": "FORM",
+    "displayName": "Product inquiry form",
+    "settings": {
+      "description": "",
+      "inputs": [
+        {
+          "id": "name",
+          "title": "Your name",
+          "description": "Tell the designer who is reaching out.",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "email",
+          "title": "Email address",
+          "description": "Where the designer can reply.",
+          "required": true,
+          "type": "short_text",
+          "format": {
+            "type": "email"
+          }
+        },
+        {
+          "id": "product",
+          "title": "Piece",
+          "description": "The piece you are asking about.",
+          "required": true,
+          "type": "short_text"
+        },
+        {
+          "id": "message",
+          "title": "Message",
+          "description": "What would you like to know?",
+          "required": true,
+          "type": "long_text"
+        }
+      ],
+      "isEndPageEnabled": false
+    }
+  },
+  "actions": [
+    {
+      "name": "12896068-69d2-434d-a211-ddf9b298532e",
+      "valid": false,
+      "displayName": "Save inquiry",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "1.0.0",
+        "actionName": "task.create",
+        "input": {
+          "fields": {
+            "@eml01": {
+              "data": {
+                "value": "{{ trigger[\"email\"] }}"
+              },
+              "rank": "1",
+              "fieldId": "@eml01"
+            },
+            "@msg01": {
+              "data": {
+                "value": "{{ trigger[\"message\"] }}"
+              },
+              "rank": "3",
+              "fieldId": "@msg01"
+            },
+            "@nam01": {
+              "data": {
+                "value": "{{ trigger[\"name\"] }}"
+              },
+              "rank": "0",
+              "fieldId": "@nam01"
+            },
+            "@prd01": {
+              "data": {
+                "value": "{{ trigger[\"product\"] }}"
+              },
+              "rank": "2",
+              "fieldId": "@prd01"
+            },
+            "@sts01": {
+              "data": {
+                "value": "new"
+              },
+              "rank": "5",
+              "fieldId": "@sts01"
+            },
+            "@sub01": {
+              "data": {
+                "value": "{{ trigger[\"triggeredAt\"] }}"
+              },
+              "rank": "4",
+              "fieldId": "@sub01"
+            }
+          },
+          "content": "Inquiry from {{ trigger[\"name\"] }}",
+          "position": "beforeend",
+          "projectId": {
+            "type": "flow-template-variable-input-type",
+            "id": "t9DyRVmT63b4mfxU"
+          }
+        }
+      }
+    }
+  ],
+  "variables": {
+    "t9DyRVmT63b4mfxU": {
+      "id": "t9DyRVmT63b4mfxU",
+      "rank": "V",
+      "type": "string",
+      "format": "taskade-project-id"
+    }
+  }
+}

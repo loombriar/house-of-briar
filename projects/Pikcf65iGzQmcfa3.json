@@ -1,0 +1,1388 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "3ee28299-5748-4e10-bd30-62528fcad2cf",
+        "text": {
+          "ops": [
+            {
+              "insert": "Checkout Flow"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": null,
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "68d9a52a-698b-48dc-9d01-030fdd6dc9b1",
+            "text": {
+              "ops": [
+                {
+                  "insert": "STEP 1 — Cart Review"
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": null,
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "a4a50440-de5d-46f7-a9f5-7fca95c41615",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Display cart items: thumbnail, name, variant"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": null,
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "5bfea866-c4a3-448b-b03a-d0429ff5d549",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Quantity stepper +/- with min qty 1"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": null,
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "8cab4b37-2812-4d69-9e05-12d891193b38",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Show unit price and line total per item"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": null,
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "eaf031eb-b88f-4440-8562-a66add0337b8",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Coupon code input — SAVE10 = 10% off, error on invalid"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": null,
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "f090adbb-44fc-4316-96b9-ec42da7986a2",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Show live subtotal"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": null,
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "f997c823-4f09-4eaa-96f3-f95f172c7e1f",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Proceed to Checkout CTA "
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": null,
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "e7a3509e-3d57-441c-b9d5-bdeab85f1385",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "STEP 2 — Customer Information"
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": null,
+                "collapsed": false,
+                "completed": false,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "c3ae07d9-cb0e-4263-abae-ba8b8d436af2",
+                    "text": {
+                      "ops": [
+                        {
+                          "insert": "Email address (required, validate format)"
+                        },
+                        {
+                          "insert": "\n",
+                          "attributes": {
+                            "paragraph": true
+                          }
+                        }
+                      ]
+                    },
+                    "format": null,
+                    "collapsed": false,
+                    "completed": false,
+                    "children": []
+                  },
+                  {
+                    "type": "text",
+                    "id": "dc52950e-2c3d-4ac1-9508-3c5921c89d79",
+                    "text": {
+                      "ops": [
+                        {
+                          "insert": "First Name and Last Name (required)"
+                        },
+                        {
+                          "insert": "\n",
+                          "attributes": {
+                            "paragraph": true
+                          }
+                        }
+                      ]
+                    },
+                    "format": null,
+                    "collapsed": false,
+                    "completed": false,
+                    "children": []
+                  },
+                  {
+                    "type": "text",
+                    "id": "e477c5ce-47dd-4b39-879c-0a801b11c352",
+                    "text": {
+                      "ops": [
+                        {
+                          "insert": "Phone number (required, format: (XXX) XXX-XXXX)"
+                        },
+                        {
+                          "insert": "\n",
+                          "attributes": {
+                            "paragraph": true
+                          }
+                        }
+                      ]
+                    },
+                    "format": null,
+                    "collapsed": false,
+                    "completed": false,
+                    "children": []
+                  },
+                  {
+                    "type": "text",
+                    "id": "1ddc4ca1-a2d3-4170-9cdd-267674d79cc6",
+                    "text": {
+                      "ops": [
+                        {
+                          "insert": "Checkbox: Create an account? — reveals Password field"
+                        },
+                        {
+                          "insert": "\n",
+                          "attributes": {
+                            "paragraph": true
+                          }
+                        }
+                      ]
+                    },
+                    "format": null,
+                    "collapsed": false,
+                    "completed": false,
+                    "children": []
+                  },
+                  {
+                    "type": "text",
+                    "id": "08bcff94-f27d-40e8-aa98-4328f011dabc",
+                    "text": {
+                      "ops": [
+                        {
+                          "insert": "Checkbox: Subscribe to newsletter (pre-checked)"
+                        },
+                        {
+                          "insert": "\n",
+                          "attributes": {
+                            "paragraph": true
+                          }
+                        }
+                      ]
+                    },
+                    "format": null,
+                    "collapsed": false,
+                    "completed": false,
+                    "children": []
+                  },
+                  {
+                    "type": "text",
+                    "id": "650bfc35-e3be-498f-92f8-c7e5586e3e86",
+                    "text": {
+                      "ops": [
+                        {
+                          "insert": "Back + Continue to Shipping CTA (disabled until "
+                        },
+                        {
+                          "insert": "\n",
+                          "attributes": {
+                            "paragraph": true
+                          }
+                        }
+                      ]
+                    },
+                    "format": null,
+                    "collapsed": false,
+                    "completed": false,
+                    "children": []
+                  },
+                  {
+                    "type": "text",
+                    "id": "973d1d38-7f34-4a23-9736-48178f5e4dd1",
+                    "text": {
+                      "ops": [
+                        {
+                          "insert": "STEP 3 — Shipping Address"
+                        },
+                        {
+                          "insert": "\n",
+                          "attributes": {
+                            "paragraph": true
+                          }
+                        }
+                      ]
+                    },
+                    "format": null,
+                    "collapsed": false,
+                    "completed": false,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "b54fa5e9-9b1e-4d05-913d-5624925c0a9f",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "Address Line 1 (required)"
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "id": "b7da7892-bd8e-43cf-bd70-4bde56f77a29",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "Address Line 2 (optional)"
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "id": "671983dd-1c83-4900-96f4-34cdd8c15c0a",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "City (required)"
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "id": "fdcc8483-7568-4195-afc6-9ec20805d8f7",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "State dropdown — all US states (required)"
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "id": "19702ee8-ab80-4b04-a91b-f08e1bbfaebe",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "ZIP / Postal Code (required, validate 5-digit US ZIP)"
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "id": "6d1abb15-062f-43ae-8be4-7fa7f3e30157",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "Country dropdown — defaults to United States"
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "id": "f01c0faa-f6f5-4499-82c4-7b656076ea79",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "Checkbox: Save this address for future orders"
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "id": "0a5db0e6-08c9-4d57-a0ec-c86074d612fd",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "Back + Continue to Shipping "
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "id": "fcc77ac9-e6fa-4dfc-92b8-d9b5af93e5f4",
+                        "text": {
+                          "ops": [
+                            {
+                              "insert": "STEP 4 — Shipping Method"
+                            },
+                            {
+                              "insert": "\n",
+                              "attributes": {
+                                "paragraph": true
+                              }
+                            }
+                          ]
+                        },
+                        "format": null,
+                        "collapsed": false,
+                        "completed": false,
+                        "children": [
+                          {
+                            "type": "text",
+                            "id": "e80c18f1-94dd-45de-ae25-8eb00b1ba73a",
+                            "text": {
+                              "ops": [
+                                {
+                                  "insert": "Standard Shipping — 5-7 business days — FREE"
+                                },
+                                {
+                                  "insert": "\n",
+                                  "attributes": {
+                                    "paragraph": true
+                                  }
+                                }
+                              ]
+                            },
+                            "format": null,
+                            "collapsed": false,
+                            "completed": false,
+                            "children": []
+                          },
+                          {
+                            "type": "text",
+                            "id": "3a6b969b-fd4d-4cea-bd99-041138d8d75c",
+                            "text": {
+                              "ops": [
+                                {
+                                  "insert": "Express Shipping — 2-3 business days — $9.99"
+                                },
+                                {
+                                  "insert": "\n",
+                                  "attributes": {
+                                    "paragraph": true
+                                  }
+                                }
+                              ]
+                            },
+                            "format": null,
+                            "collapsed": false,
+                            "completed": false,
+                            "children": []
+                          },
+                          {
+                            "type": "text",
+                            "id": "fad87b5e-747e-46e9-9401-cc813b94c042",
+                            "text": {
+                              "ops": [
+                                {
+                                  "insert": "Overnight — Next business day — $24.99"
+                                },
+                                {
+                                  "insert": "\n",
+                                  "attributes": {
+                                    "paragraph": true
+                                  }
+                                }
+                              ]
+                            },
+                            "format": null,
+                            "collapsed": false,
+                            "completed": false,
+                            "children": []
+                          },
+                          {
+                            "type": "text",
+                            "id": "b59815b3-1609-4331-903b-302d17e8feb7",
+                            "text": {
+                              "ops": [
+                                {
+                                  "insert": "Selected card shows indigo border and highlighted background"
+                                },
+                                {
+                                  "insert": "\n",
+                                  "attributes": {
+                                    "paragraph": true
+                                  }
+                                }
+                              ]
+                            },
+                            "format": null,
+                            "collapsed": false,
+                            "completed": false,
+                            "children": []
+                          },
+                          {
+                            "type": "text",
+                            "id": "ad5addb5-7fdc-401a-bfd5-1cbadf769428",
+                            "text": {
+                              "ops": [
+                                {
+                                  "insert": "Show estimated delivery date per option"
+                                },
+                                {
+                                  "insert": "\n",
+                                  "attributes": {
+                                    "paragraph": true
+                                  }
+                                }
+                              ]
+                            },
+                            "format": null,
+                            "collapsed": false,
+                            "completed": false,
+                            "children": []
+                          },
+                          {
+                            "type": "text",
+                            "id": "5040ced0-b897-4dbf-9e0f-265648612447",
+                            "text": {
+                              "ops": [
+                                {
+                                  "insert": "Shipping cost updates live in order summary sidebar"
+                                },
+                                {
+                                  "insert": "\n",
+                                  "attributes": {
+                                    "paragraph": true
+                                  }
+                                }
+                              ]
+                            },
+                            "format": null,
+                            "collapsed": false,
+                            "completed": false,
+                            "children": []
+                          },
+                          {
+                            "type": "text",
+                            "id": "4ad5cfc0-f2ff-4246-b66f-8f33f26b2e35",
+                            "text": {
+                              "ops": [
+                                {
+                                  "insert": "Back + Continue to Payment CTAMethod CT"
+                                },
+                                {
+                                  "insert": "\n",
+                                  "attributes": {
+                                    "paragraph": true
+                                  }
+                                }
+                              ]
+                            },
+                            "format": null,
+                            "collapsed": false,
+                            "completed": false,
+                            "children": []
+                          },
+                          {
+                            "type": "text",
+                            "id": "f69740c8-5ec0-4f3c-8ae6-34667ac3fccc",
+                            "text": {
+                              "ops": [
+                                {
+                                  "insert": "STEP 4 — Shipping Method"
+                                },
+                                {
+                                  "insert": "\n",
+                                  "attributes": {
+                                    "paragraph": true
+                                  }
+                                }
+                              ]
+                            },
+                            "format": null,
+                            "collapsed": false,
+                            "completed": false,
+                            "children": [
+                              {
+                                "type": "text",
+                                "id": "d5221323-e808-405a-98a5-ee96540d2c6c",
+                                "text": {
+                                  "ops": [
+                                    {
+                                      "insert": "Standard Shipping — 5-7 business days — FREE"
+                                    },
+                                    {
+                                      "insert": "\n",
+                                      "attributes": {
+                                        "paragraph": true
+                                      }
+                                    }
+                                  ]
+                                },
+                                "format": null,
+                                "collapsed": false,
+                                "completed": false,
+                                "children": []
+                              },
+                              {
+                                "type": "text",
+                                "id": "2b6ef615-f785-4705-bd3c-acb676cd91a6",
+                                "text": {
+                                  "ops": [
+                                    {
+                                      "insert": "Express Shipping — 2-3 business days — $9.99"
+                                    },
+                                    {
+                                      "insert": "\n",
+                                      "attributes": {
+                                        "paragraph": true
+                                      }
+                                    }
+                                  ]
+                                },
+                                "format": null,
+                                "collapsed": false,
+                                "completed": false,
+                                "children": []
+                              },
+                              {
+                                "type": "text",
+                                "id": "f2386cb2-3355-404f-9082-008448e0cc6a",
+                                "text": {
+                                  "ops": [
+                                    {
+                                      "insert": "Overnight — Next business day — $24.99"
+                                    },
+                                    {
+                                      "insert": "\n",
+                                      "attributes": {
+                                        "paragraph": true
+                                      }
+                                    }
+                                  ]
+                                },
+                                "format": null,
+                                "collapsed": false,
+                                "completed": false,
+                                "children": []
+                              },
+                              {
+                                "type": "text",
+                                "id": "abd45064-6f39-40fa-a1ac-a9cd31a10818",
+                                "text": {
+                                  "ops": [
+                                    {
+                                      "insert": "Selected option shows indigo border and highlighted background"
+                                    },
+                                    {
+                                      "insert": "\n",
+                                      "attributes": {
+                                        "paragraph": true
+                                      }
+                                    }
+                                  ]
+                                },
+                                "format": null,
+                                "collapsed": false,
+                                "completed": false,
+                                "children": []
+                              },
+                              {
+                                "type": "text",
+                                "id": "e0353575-e9b0-4e1b-aea6-260677b073c9",
+                                "text": {
+                                  "ops": [
+                                    {
+                                      "insert": "Show estimated delivery date per option"
+                                    },
+                                    {
+                                      "insert": "\n",
+                                      "attributes": {
+                                        "paragraph": true
+                                      }
+                                    }
+                                  ]
+                                },
+                                "format": null,
+                                "collapsed": false,
+                                "completed": false,
+                                "children": []
+                              },
+                              {
+                                "type": "text",
+                                "id": "7e9a21af-53b5-4e8d-bfc6-9fd7cce7eb52",
+                                "text": {
+                                  "ops": [
+                                    {
+                                      "insert": "Shipping cost updates live in order summary sidebar"
+                                    },
+                                    {
+                                      "insert": "\n",
+                                      "attributes": {
+                                        "paragraph": true
+                                      }
+                                    }
+                                  ]
+                                },
+                                "format": null,
+                                "collapsed": false,
+                                "completed": false,
+                                "children": []
+                              },
+                              {
+                                "type": "text",
+                                "id": "10320e82-1e03-45e7-816f-0152f2e00eef",
+                                "text": {
+                                  "ops": [
+                                    {
+                                      "insert": "Back + Continue to Payment CTAAvalid"
+                                    },
+                                    {
+                                      "insert": "\n",
+                                      "attributes": {
+                                        "paragraph": true
+                                      }
+                                    }
+                                  ]
+                                },
+                                "format": null,
+                                "collapsed": false,
+                                "completed": false,
+                                "children": []
+                              },
+                              {
+                                "type": "text",
+                                "id": "d94065a5-25a4-4000-aa68-efe0abe63ff1",
+                                "text": {
+                                  "ops": [
+                                    {
+                                      "insert": "STEP 5 — Payment"
+                                    },
+                                    {
+                                      "insert": "\n",
+                                      "attributes": {
+                                        "paragraph": true
+                                      }
+                                    }
+                                  ]
+                                },
+                                "format": null,
+                                "collapsed": false,
+                                "completed": false,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "id": "f906981b-255a-4601-a58b-1315e37b4fdd",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Credit / Debit Card tab (default)"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "857d107c-a62e-4dd8-8307-3c9574000b17",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Card number — live formatting, brand detection (Visa/MC/Amex/Discover)"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "ac4d8665-ac4f-4ae4-a6d0-78b12782b934",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Cardholder name (required)"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "18973cff-59a1-4e00-88f7-b30c2cf375b6",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Expiry MM/YY — validate not before Oct 2026"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "4ef2df9f-7188-47c8-ac9b-05191a30b22f",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "CVV — 3 digits (4 for Amex) with tooltip"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "397b3dae-6ffd-4acd-af5b-83aab8613740",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Billing address — Same as shipping (default) or Enter different"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "f0081d82-e3ed-4bd7-95d0-f4abf71695fd",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "SSL + PCI DSS security badges"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "693bef58-1636-44e0-98ae-298ab2ad9f83",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "PayPal tab — redirect message + PayPal button"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "f8df5797-3f5c-498f-8534-5489faa1b5cb",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Apple Pay tab — grayed out, supported devices note"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "00af821e-f1f6-4041-8145-87bab9744341",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Google Pay tab — dark G Pay button, accepted cards row"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "9d5c7b34-dcc3-44de-8634-38592ea2e57e",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Klarna tab — Pay in 4 / Pay in 30 / Monthly plans, DOB field"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "e4a71a6b-6e9f-47ea-b5e2-4b7cf7db119f",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Afterpay tab — 4-payment schedule timeline, agree to terms checkbox"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "68684587-4765-49cd-9d27-17ec873908e3",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Venmo tab — handle input, QR code toggle"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "72e8df89-15c4-431c-b837-5273c7f4fc48",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Bank Transfer / ACH tab — routing, account number, checking/savings"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "716b69f8-c654-42be-8fbe-b567c9ef92b1",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Card decline: 4000000000000002 = declined, 4000000000000995 = insufficient "
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "4d1c7da5-d368-4632-9d55-d9976db7b166",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "Place Order button with 2s processing spinner then success or error"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "id": "951b831e-49e5-42c3-84a1-f03900b07599",
+                                    "text": {
+                                      "ops": [
+                                        {
+                                          "insert": "STEP 6 - Order Confirmation"
+                                        },
+                                        {
+                                          "insert": "\n",
+                                          "attributes": {
+                                            "paragraph": true
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "format": null,
+                                    "collapsed": false,
+                                    "completed": false,
+                                    "children": [
+                                      {
+                                        "type": "text",
+                                        "id": "f306fbf8-7359-4808-aa1d-8f771af442d9",
+                                        "text": {
+                                          "ops": [
+                                            {
+                                              "insert": "Animated green checkmark circle on arrival"
+                                            },
+                                            {
+                                              "insert": "\n",
+                                              "attributes": {
+                                                "paragraph": true
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "format": null,
+                                        "collapsed": false,
+                                        "completed": false,
+                                        "children": []
+                                      },
+                                      {
+                                        "type": "text",
+                                        "id": "73b0b988-da27-47a2-bc82-30de16c99205",
+                                        "text": {
+                                          "ops": [
+                                            {
+                                              "insert": "Order Confirmed heading with auto-generated order number ORD-XXXXXX"
+                                            },
+                                            {
+                                              "insert": "\n",
+                                              "attributes": {
+                                                "paragraph": true
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "format": null,
+                                        "collapsed": false,
+                                        "completed": false,
+                                        "children": []
+                                      },
+                                      {
+                                        "type": "text",
+                                        "id": "c17ac3da-01c3-4b1c-b56c-b4997a01b049",
+                                        "text": {
+                                          "ops": [
+                                            {
+                                              "insert": "Summary: items ordered, shipping method, estimated delivery date"
+                                            },
+                                            {
+                                              "insert": "\n",
+                                              "attributes": {
+                                                "paragraph": true
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "format": null,
+                                        "collapsed": false,
+                                        "completed": false,
+                                        "children": []
+                                      },
+                                      {
+                                        "type": "text",
+                                        "id": "6dafc2fa-64de-401d-9e8c-ab67070bd4c3",
+                                        "text": {
+                                          "ops": [
+                                            {
+                                              "insert": "Shipping address and masked payment method (last 4 digits)"
+                                            },
+                                            {
+                                              "insert": "\n",
+                                              "attributes": {
+                                                "paragraph": true
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "format": null,
+                                        "collapsed": false,
+                                        "completed": false,
+                                        "children": []
+                                      },
+                                      {
+                                        "type": "text",
+                                        "id": "c2b200aa-03ab-46fc-83c8-3b131384174b",
+                                        "text": {
+                                          "ops": [
+                                            {
+                                              "insert": "What Next info box: email confirmation sent, tracking when shipped"
+                                            },
+                                            {
+                                              "insert": "\n",
+                                              "attributes": {
+                                                "paragraph": true
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "format": null,
+                                        "collapsed": false,
+                                        "completed": false,
+                                        "children": []
+                                      },
+                                      {
+                                        "type": "text",
+                                        "id": "e26ccb8c-83fa-49d6-ad1e-889a014a29ea",
+                                        "text": {
+                                          "ops": [
+                                            {
+                                              "insert": "Continue Shopping (outline) and Track Your Order (indigo) buttons"
+                                            },
+                                            {
+                                              "insert": "\n",
+                                              "attributes": {
+                                                "paragraph": true
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "format": null,
+                                        "collapsed": false,
+                                        "completed": false,
+                                        "children": []
+                                      },
+                                      {
+                                        "type": "text",
+                                        "id": "72536bc4-df34-46e1-9a80-eb42d64959bf",
+                                        "text": {
+                                          "ops": [
+                                            {
+                                              "insert": "Confetti burst animation on step arrival"
+                                            },
+                                            {
+                                              "insert": "\n",
+                                              "attributes": {
+                                                "paragraph": true
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "format": null,
+                                        "collapsed": false,
+                                        "completed": false,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "preferences": {
+    "defaultView": "list",
+    "avatar": {
+      "type": "emoji",
+      "value": "🧠"
+    },
+    "coverImageType": "background"
+  }
+}

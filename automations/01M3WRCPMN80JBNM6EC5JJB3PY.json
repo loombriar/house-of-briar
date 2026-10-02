@@ -1,0 +1,29 @@
+{
+  "version": "2",
+  "flowTitle": "",
+  "trigger": {
+    "valid": false,
+    "displayName": "New Message",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-piece-slack",
+      "pieceVersion": "BLANK",
+      "triggerName": "new_message",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "25808f88-d76b-469d-85de-47083775e155",
+      "valid": false,
+      "displayName": "Add a task",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.create",
+        "input": {}
+      }
+    }
+  ]
+}

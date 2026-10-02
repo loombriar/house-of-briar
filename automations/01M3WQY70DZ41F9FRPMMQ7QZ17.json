@@ -1,0 +1,22 @@
+{
+  "version": "2",
+  "flowTitle": "",
+  "trigger": {
+    "valid": true,
+    "type": "WEBHOOK"
+  },
+  "actions": [
+    {
+      "name": "2dbd8ef9-51a7-4152-af38-ff543a5550a0",
+      "valid": false,
+      "displayName": "Create task from webhook",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.create",
+        "input": {}
+      }
+    }
+  ]
+}

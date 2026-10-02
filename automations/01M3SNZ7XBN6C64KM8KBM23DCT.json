@@ -1,0 +1,29 @@
+{
+  "version": "2",
+  "flowTitle": "TASKS.md Task Due Date Arrives",
+  "trigger": {
+    "valid": false,
+    "displayName": "Task Due Date Arrives",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-internalpiece-taskade",
+      "pieceVersion": "BLANK",
+      "triggerName": "task.due",
+      "input": {
+        "projectId": {
+          "type": "flow-template-variable-input-type",
+          "id": "DQTpb5X9kL9kFJgh"
+        }
+      }
+    }
+  },
+  "actions": [],
+  "variables": {
+    "DQTpb5X9kL9kFJgh": {
+      "id": "DQTpb5X9kL9kFJgh",
+      "rank": "V",
+      "type": "string",
+      "format": "taskade-project-id"
+    }
+  }
+}

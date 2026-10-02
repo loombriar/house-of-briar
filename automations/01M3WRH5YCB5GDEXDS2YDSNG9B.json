@@ -1,0 +1,43 @@
+{
+  "version": "2",
+  "flowTitle": "",
+  "trigger": {
+    "valid": false,
+    "displayName": "When an agent chat ends",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-internalpiece-taskade",
+      "pieceVersion": "BLANK",
+      "triggerName": "spaceAgent.convo.public.ended",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "94abcc1a-504b-4401-a267-51a58b51ae7f",
+      "valid": true,
+      "displayName": "Summarize the conversation",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "BLANK",
+        "actionName": "ai.summarize",
+        "input": {
+          "text": "{{ trigger['conversationHistory'] }}"
+        }
+      }
+    },
+    {
+      "name": "2c053f7e-6931-42c9-a9f6-c57e666cbb37",
+      "valid": false,
+      "displayName": "Log as a task",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.create",
+        "input": {}
+      }
+    }
+  ]
+}

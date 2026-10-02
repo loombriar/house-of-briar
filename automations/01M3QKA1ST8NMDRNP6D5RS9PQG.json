@@ -1,0 +1,46 @@
+{
+  "version": "2",
+  "flowTitle": "Tell the Customer It Shipped",
+  "trigger": {
+    "valid": false,
+    "displayName": "When a tracking number is created",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-internalpiece-taskade",
+      "pieceVersion": "BLANK",
+      "triggerName": "task.custom_attribute_updated",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "ef021428-5245-4ee5-8b5a-9684a91f58fd",
+      "valid": true,
+      "displayName": "Write the Shipping Note",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "BLANK",
+        "actionName": "ai.generate",
+        "input": {
+          "prompt": "Create an automated order processing workflow that captures order details from webhook data, creates fulfillment tasks with customer info and shipping requirements, assigns to warehouse team, and sends tracking updates to customers via email."
+        }
+      }
+    },
+    {
+      "name": "9473b7fe-a88e-431f-a00e-3a144923b2ed",
+      "valid": false,
+      "displayName": "Email the Tracking Update",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-piece-gmail",
+        "pieceVersion": "BLANK",
+        "actionName": "sendEmail",
+        "input": {
+          "to": "To Customer",
+          "subject": "Tracking Update House of Briar"
+        }
+      }
+    }
+  ]
+}

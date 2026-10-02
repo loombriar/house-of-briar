@@ -1,0 +1,273 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "c69d4810-f695-4351-b2ea-0816800a1d2a",
+        "text": {
+          "ops": [
+            {
+              "insert": "Taskade Featured Kits Collection (Copy)"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": {
+          "node": "h1",
+          "children": "text"
+        },
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "6465fa3a-0634-4651-99ac-b01b749a361d",
+            "text": {
+              "ops": [
+                {
+                  "insert": "List of Featured Kits"
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h2",
+              "children": "text"
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "8c51360f-080a-4445-83a5-cd8e5c6288cc",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Automated Research Kit",
+                      "attributes": {
+                        "link": "https://www.taskade.com/bundle/01JK55W832AC8CJP6EGFSGF3PX"
+                      }
+                    },
+                    {
+                      "insert": " "
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "4e6c61fe-d1c4-4217-963c-6bbdb9d8b916",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Taskade Automation Expert Kit",
+                      "attributes": {
+                        "link": "https://www.taskade.com/bundle/01JK81N4PWMMVQPHA99YZEPJDP"
+                      }
+                    },
+                    {
+                      "insert": " "
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "94a7ff08-6e57-4426-9587-5b3ecba5d33c",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Unlimited Agent Knowledge Kit",
+                      "attributes": {
+                        "link": "https://www.taskade.com/bundle/01JK82XFM2C3M6XW399EM6A0HY"
+                      }
+                    },
+                    {
+                      "insert": " "
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "c31599af-a1c5-488f-8a36-8e309978ce16",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "EEAT Blog Content Evaluator",
+                      "attributes": {
+                        "link": "https://www.taskade.com/bundle/01JK5JZDDN4J1WH7CRH06M2FEN"
+                      }
+                    },
+                    {
+                      "insert": " "
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "5e2df97c-4655-4bdc-9bad-10f3f618d935",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "SEO Entity Research Kit",
+                      "attributes": {
+                        "link": "https://www.taskade.com/bundle/01JK5FZP970NNYY5RQJ16HCC44"
+                      }
+                    },
+                    {
+                      "insert": " "
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "bc5fdb01-1055-4e4d-97ee-0bdfcc15702f",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Multi-Source Daily News Digest Kit",
+                      "attributes": {
+                        "link": "https://www.taskade.com/bundle/01JJYH8HP4FQ4XCEN56P42G243"
+                      }
+                    },
+                    {
+                      "insert": " "
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "045ddde8-4ae0-4605-8ac9-c79ec30455a6",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Client Request Kit",
+                      "attributes": {
+                        "link": "https://www.taskade.com/bundle/01JK9YCXB63G41M3XBFVVGQWC5"
+                      }
+                    },
+                    {
+                      "insert": " "
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "bullet",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "preferences": {
+    "avatar": {
+      "type": "emoji",
+      "value": "📦"
+    }
+  }
+}

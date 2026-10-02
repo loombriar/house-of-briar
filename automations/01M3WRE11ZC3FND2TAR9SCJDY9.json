@@ -1,0 +1,53 @@
+{
+  "version": "2",
+  "flowTitle": "Triage New Tasks with AI",
+  "trigger": {
+    "valid": false,
+    "displayName": "Task Added",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-internalpiece-taskade",
+      "pieceVersion": "BLANK",
+      "triggerName": "task.added",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "55576c16-1cac-468c-b280-086ac9ce1830",
+      "valid": false,
+      "displayName": "Categorize with AI",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "BLANK",
+        "actionName": "ai.categorize",
+        "input": {}
+      }
+    },
+    {
+      "name": "d270468e-7ac7-404e-9bcc-1ebd14410dcb",
+      "valid": false,
+      "displayName": "Update Custom Fields",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "updateCustomFields",
+        "input": {}
+      }
+    },
+    {
+      "name": "d5ab6add-c381-419b-9826-6984af9dfc7c",
+      "valid": false,
+      "displayName": "Assign Owner",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "BLANK",
+        "actionName": "task.assign",
+        "input": {}
+      }
+    }
+  ]
+}
